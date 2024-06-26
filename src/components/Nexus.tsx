@@ -1,6 +1,7 @@
 import { Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import { Nexus as NexusType } from "../types";
+import { Nexus as NexusType } from "../data/types";
+import determineNexusColor from "../functions/determineNexusColor";
 
 interface NexusProps {
   nexus: NexusType;
@@ -9,6 +10,8 @@ interface NexusProps {
 const Nexus = ({ nexus }: NexusProps) => {
   const [life, setLife] = useState<number>(20);
   const [isDead, setIsDead] = useState<boolean>(false);
+
+  const color = determineNexusColor(nexus.color);
 
   const handleClick = (val: number) => {
     if (isDead && val > 0) setIsDead(false);
@@ -21,16 +24,16 @@ const Nexus = ({ nexus }: NexusProps) => {
     <Flex
       height={{ base: "200px", md: "250px", lg: "300px" }}
       width={{ base: "300px", md: "350px", lg: "400px" }}
-      border="1px black solid"
+      border={isDead ? `1px gray dotted` : `1px black solid`}
       borderRadius="15px"
       direction="column"
-      bgColor="black"
+      bgColor={isDead ? `white` : `black`}
     >
       <Flex
-        bgColor={isDead ? nexus.color + `.800` : nexus.color + `.200`}
+        bgColor={isDead ? color + `.500` : color + `.200`}
         direction="column"
         m={1}
-        border="1px black solid"
+        border={isDead ? `1px gray dotted` : `1px black solid`}
         borderRadius="15px"
         height="100%"
       >
@@ -46,7 +49,7 @@ const Nexus = ({ nexus }: NexusProps) => {
           m={2}
         >
           <Button
-            colorScheme={nexus.color}
+            colorScheme={color}
             height={{ base: "50px", md: "60px", lg: "70px" }}
             width={{ base: "50px", md: "60px", lg: "70px" }}
             onClick={() => handleClick(-1)}
@@ -58,7 +61,7 @@ const Nexus = ({ nexus }: NexusProps) => {
             {isDead ? `X` : life}
           </Heading>
           <Button
-            colorScheme={nexus.color}
+            colorScheme={color}
             height={{ base: "50px", md: "60px", lg: "70px" }}
             width={{ base: "50px", md: "60px", lg: "70px" }}
             onClick={() => handleClick(1)}

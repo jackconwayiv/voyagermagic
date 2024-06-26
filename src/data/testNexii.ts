@@ -1,22 +1,15 @@
 export default [
   {
-    color: "purple",
-    name: "Barthomoleu the Vampire",
-    aliveRules:
-      "On upkeep: each player loses 1 life and I gain that much life.",
+    color: "W",
+    name: "Obelisk of Solidarity",
+    aliveRules: "I can't be attacked unless each player attacks me.",
     deadRules: "tbd.",
   },
   {
-    color: "yellow",
-    name: "Esmerelda the Vampire",
-    aliveRules: "On upkeep: each white foe grows.",
-    deadRules: "tbd.",
-  },
-  {
-    color: "red",
-    name: "Vinny the Pirate",
+    color: "W",
+    name: "Cat-Faced God",
     aliveRules:
-      "On upkeep: each player chooses: wound a creature you control, or I deal 2 damage to you.",
+      "Unless each player strikes me with one or more creatures, prevent all combat damage I would take.",
     deadRules: "tbd.",
   },
 ];

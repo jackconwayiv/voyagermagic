@@ -1,14 +1,14 @@
 import { Button, Flex, Heading, Text } from "@chakra-ui/react";
+import determineColors from "../functions/determineColors";
 
 const GameCard = () => {
   const card = {
     name: "Scary Birds",
-    cost: "U",
+    cost: "4UU",
     type: "Creature Summon",
-    color: "blue",
     text: "Encounter two 2/2 blue Bird creature tokens.",
   };
-
+  const colors = determineColors(card.cost);
   return (
     <Flex
       width={{ base: "200px", md: "250px", lg: "300px" }}
@@ -21,7 +21,7 @@ const GameCard = () => {
       <Flex
         direction="column"
         height="100%"
-        bgColor={card.color + `.200`}
+        bgColor={colors.d + `.200`}
         borderRadius="15px"
         p={1}
         m={1}
@@ -30,7 +30,7 @@ const GameCard = () => {
           border="1px black solid"
           direction="row"
           justifyContent="space-between"
-          bgColor={card.color + `.50`}
+          bgColor={colors.a + `.50`}
           m={2}
           p={3}
         >
@@ -47,7 +47,7 @@ const GameCard = () => {
           justifyContent="center"
           m={2}
           p={3}
-          bgColor={card.color + `.50`}
+          bgColor={colors.b + `.50`}
         >
           <Text fontSize={{ base: "12px", md: "16px", lg: "18px" }}>
             {card.type}
@@ -55,7 +55,7 @@ const GameCard = () => {
         </Flex>
 
         <Flex
-          bgColor={card.color + `.50`}
+          bgColor={colors.c + `.50`}
           border="1px black solid"
           m={2}
           p={3}
@@ -66,13 +66,13 @@ const GameCard = () => {
           </Text>
         </Flex>
         <Flex direction="row" mb={2} justifyContent="space-evenly">
-          <Button size="sm">
+          <Button colorScheme={colors.d} size="sm">
             GR
           </Button>{" "}
-          <Button size="sm">
+          <Button colorScheme={colors.d} size="sm">
             EX
           </Button>{" "}
-          <Button size="sm">
+          <Button colorScheme={colors.d} size="sm">
             LI
           </Button>
         </Flex>
