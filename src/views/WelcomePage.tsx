@@ -10,7 +10,8 @@ const WelcomePage = ({ setPlayerCount }: WelcomePageProps) => {
 
   const handleClick = (num: number) => {
     setPlayerCount(num);
-    navigate("/campaigns");
+    // navigate("/campaigns");
+    navigate("/play");
   };
 
   const renderButton = (num: number) => {

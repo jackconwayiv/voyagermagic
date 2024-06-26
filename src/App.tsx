@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SettingsTray from "./components/SettingsTray";
 import "./index.css";
 import CampaignsView from "./views/CampaignsView";
+import PlayView from "./views/PlayView";
 import ScenesView from "./views/ScenesView";
 import WelcomePage from "./views/WelcomePage";
 
@@ -25,6 +26,16 @@ function App() {
             <Route
               path="/"
               element={<WelcomePage setPlayerCount={setPlayerCount} />}
+            />
+            <Route
+              path="/play"
+              element={
+                <PlayView
+                  campaign={campaign}
+                  playerCount={playerCount}
+                  scene={scene}
+                />
+              }
             />
             <Route
               path="/campaigns"
