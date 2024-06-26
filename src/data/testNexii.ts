@@ -2,7 +2,6 @@ export default [
   {
     color: "purple",
     name: "Barthomoleu the Vampire",
-    isDead: false,
     aliveRules:
       "On upkeep: each player loses 1 life and I gain that much life.",
     deadRules: "tbd.",
@@ -10,7 +9,6 @@ export default [
   {
     color: "yellow",
     name: "Esmerelda the Vampire",
-    isDead: false,
     aliveRules: "On upkeep: each white foe grows.",
     deadRules: "tbd.",
   },

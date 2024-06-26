@@ -1,8 +1,9 @@
 import { Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { useState } from "react";
+import { Nexus as NexusType } from "../types";
 
 interface NexusProps {
-  nexus: any;
+  nexus: NexusType;
 }
 
 const Nexus = ({ nexus }: NexusProps) => {

@@ -1,4 +1,5 @@
 import { Flex, Heading, Wrap, WrapItem } from "@chakra-ui/react";
+import GameCard from "../components/GameCard";
 import Nexus from "../components/Nexus";
 import testNexii from "../data/testNexii";
 
@@ -25,11 +26,12 @@ const PlayView = ({ campaign, playerCount, scene }: PlayViewProps) => {
           {JSON.stringify(scene)}
         </Heading>
       </Flex>
-      <Flex direction="row" width="100%">
+      <Flex direction="row" width="100%" height="100%">
         <Flex
           alignItems="center"
           justifyContent="center"
           width="70%"
+          height="100%"
           direction="row"
           border="1px black solid"
           p={5}
@@ -49,13 +51,15 @@ const PlayView = ({ campaign, playerCount, scene }: PlayViewProps) => {
         </Flex>
         <Flex
           alignItems="center"
+          justifyContent="center"
           direction="column"
           width="30%"
+          height="100%"
           border="1px black solid"
           p={5}
           m={5}
         >
-          <Heading>Action Log</Heading>
+          <GameCard />
         </Flex>
       </Flex>
     </Flex>

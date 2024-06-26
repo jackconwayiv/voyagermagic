@@ -1,7 +1,7 @@
 import { Flex, Spacer } from "@chakra-ui/react";
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import SettingsTray from "./components/SettingsTray";
+import SettingsTray from "./views/SettingsTray";
 import "./index.css";
 import CampaignsView from "./views/CampaignsView";
 import PlayView from "./views/PlayView";
