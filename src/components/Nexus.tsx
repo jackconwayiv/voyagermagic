@@ -27,6 +27,7 @@ const Nexus = ({ nexus }: NexusProps) => {
       border={isDead ? `1px gray dotted` : `1px black solid`}
       borderRadius="15px"
       direction="column"
+      m={1}
       bgColor={isDead ? `white` : `black`}
     >
       <Flex

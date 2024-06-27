@@ -1,6 +1,7 @@
 import { Flex, Heading, Wrap, WrapItem } from "@chakra-ui/react";
 import GameCard from "../components/GameCard";
 import Nexus from "../components/Nexus";
+import cards from "../data/cardConstructor";
 import testNexii from "../data/testNexii";
 
 interface PlayViewProps {
@@ -59,7 +60,9 @@ const PlayView = ({ campaign, playerCount, scene }: PlayViewProps) => {
           p={5}
           m={5}
         >
-          <GameCard />
+          {cards.map((card) => (
+            <GameCard playerCount={playerCount} card={card} key={card.name} />
+          ))}
         </Flex>
       </Flex>
     </Flex>

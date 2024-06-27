@@ -1,13 +1,13 @@
 import { Button, Flex, Heading, Text } from "@chakra-ui/react";
-import determineColors from "../functions/determineColors";
+import { Card } from "../data/types";
+import determineColors from "../functions/determineCardColors";
 
-const GameCard = () => {
-  const card = {
-    name: "Scary Birds",
-    cost: "4UU",
-    type: "Creature Summon",
-    text: "Encounter two 2/2 blue Bird creature tokens.",
-  };
+interface GameCardProps {
+  card: Card;
+  playerCount: number;
+}
+
+const GameCard = ({ card, playerCount }: GameCardProps) => {
   const colors = determineColors(card.cost);
   return (
     <Flex
@@ -17,6 +17,7 @@ const GameCard = () => {
       borderRadius="15px"
       direction="column"
       bgColor="black"
+      m={1}
     >
       <Flex
         direction="column"
@@ -62,7 +63,7 @@ const GameCard = () => {
           height="100%"
         >
           <Text fontSize={{ base: "14px", md: "18px", lg: "20px" }}>
-            {card.text}
+            {card.generateText(playerCount)}
           </Text>
         </Flex>
         <Flex direction="row" mb={2} justifyContent="space-evenly">
