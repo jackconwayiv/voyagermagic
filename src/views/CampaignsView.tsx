@@ -1,12 +1,19 @@
 import { Button, Flex, Heading, Text, Wrap } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { GameState } from "../data/types";
 
 interface CampaignsViewProps {
-  setCampaign: React.Dispatch<React.SetStateAction<string>>;
+  gameState: GameState;
+  setGameState: React.Dispatch<React.SetStateAction<GameState>>;
 }
 
-const CampaignsView = ({ setCampaign }: CampaignsViewProps) => {
+const CampaignsView = ({ gameState, setGameState }: CampaignsViewProps) => {
   const navigate = useNavigate();
+
+  const setCampaign = (campaign: string) => {
+    const newGameState = { ...gameState, campaign: campaign };
+    setGameState(newGameState);
+  };
 
   const handleClick = (code: string) => {
     setCampaign(code);
@@ -27,22 +34,23 @@ const CampaignsView = ({ setCampaign }: CampaignsViewProps) => {
     >
       <Heading>Choose a Campaign:</Heading>
       <Wrap justifyContent="space-between">
+        {/* refactor this to map over array of campaigns */}
         <Button
           bgColor="green.200"
-          onClick={() => handleClick("MEL")}
+          onClick={() => handleClick("BLB")}
           height="200px"
           width="200px"
         >
-          <Text fontSize="30px">MELODIA</Text>
+          <Text fontSize="20px">BLOOMBURROW</Text>
         </Button>
-        <Button
+        {/* <Button
           bgColor="orange.200"
           onClick={() => handleClick("CORE")}
           height="200px"
           width="200px"
         >
           <Text fontSize="30px">CORE</Text>
-        </Button>
+        </Button> */}
       </Wrap>
     </Flex>
   );

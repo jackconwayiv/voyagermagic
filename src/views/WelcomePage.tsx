@@ -1,17 +1,20 @@
 import { Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { GameState } from "../data/types";
 
 interface WelcomePageProps {
-  setPlayerCount: React.Dispatch<React.SetStateAction<number>>;
+  gameState: GameState;
+  setGameState: React.Dispatch<React.SetStateAction<GameState>>;
 }
 
-const WelcomePage = ({ setPlayerCount }: WelcomePageProps) => {
+const WelcomePage = ({ gameState, setGameState }: WelcomePageProps) => {
   const navigate = useNavigate();
 
   const handleClick = (num: number) => {
-    setPlayerCount(num);
+    const newGameState: GameState = { ...gameState, playerCount: num };
+    setGameState(newGameState);
     // navigate("/campaigns");
-    navigate("/play");
+    navigate("/scenes");
   };
 
   const renderButton = (num: number) => {

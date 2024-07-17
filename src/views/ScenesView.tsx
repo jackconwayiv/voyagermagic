@@ -1,34 +1,47 @@
-import { Button, Flex, Heading, Text, Wrap, WrapItem } from "@chakra-ui/react";
+import { Card, Flex, Heading, Text, Wrap, WrapItem } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import sceneColorArray from "../data/sceneColorArray";
+import { nexiiData } from "../data/blbNexiiData";
+import { blbScenes } from "../data/blbSceneData";
+import { campaignDictionary } from "../data/campaignDictionary";
+import { GameState, Scene } from "../data/types";
+import determineCardColors from "../functions/determineCardColors";
 
 interface ScenesViewProps {
-  setScene: React.Dispatch<React.SetStateAction<number>>;
+  gameState: GameState;
+  setGameState: React.Dispatch<React.SetStateAction<GameState>>;
 }
 
-const ScenesView = ({ setScene }: ScenesViewProps) => {
+const ScenesView = ({ gameState, setGameState }: ScenesViewProps) => {
   const navigate = useNavigate();
 
   const handleClick = (scene: number) => {
-    setScene(scene);
-    navigate("/lobby");
+    const newGameState = { ...gameState, scene: scene };
+    const newNexii = nexiiData.filter(
+      (nexus) => nexus.campaign === gameState.campaign && nexus.scene === scene
+    );
+    newGameState.nexii = newNexii;
+    setGameState(newGameState);
+    navigate("/play");
+    //refactor to stamp scenario text onto gameState object for easy rendering in future
   };
 
-  const renderButton = (num: number) => {
+  const renderButton = (scene: Scene) => {
+    const colors = determineCardColors(scene.color);
     return (
       <WrapItem
-        key={num}
+        key={scene.scene}
         width={{
-          base: num === 11 ? "200px" : "100px",
-          md: num === 11 ? "300px" : "150px",
-          lg: num === 11 ? "400px" : "200px",
+          base: "210px",
+          md: "260px",
+          lg: "310px",
         }}
       >
-        <Button
-          bgColor={sceneColorArray[num]}
-          onClick={() => handleClick(num)}
-          height={{ base: "100px", md: "150px", lg: "200px" }}
+        <Card
+          bgGradient={`linear(to-tr, ${colors.a}.200, ${colors.c}.200, ${colors.b}.200)`}
+          onClick={() => handleClick(scene.scene)}
+          height={{ base: "200px", md: "250px", lg: "300px" }}
           width="100%"
+          p={2}
         >
           <Flex
             direction="column"
@@ -36,24 +49,27 @@ const ScenesView = ({ setScene }: ScenesViewProps) => {
             justify="center"
             height="100%"
           >
-            <Text fontSize={{ base: "15px", md: "20px", lg: "30px" }}>
-              Scene
+            <Text
+              flexWrap={"wrap"}
+              fontSize={{ base: "16px", md: "20px", lg: "24px" }}
+            >
+              {scene.name}
             </Text>
-            <Text fontSize={{ base: "25px", md: "40px", lg: "50px" }}>
-              {num}
+            <Text m={2} fontSize={{ base: "12px", md: "16px", lg: "20px" }}>
+              {campaignDictionary[gameState.campaign]} Scene {scene.scene}
+            </Text>
+            <Text
+              flexWrap={"wrap"}
+              m={2}
+              textAlign={"justify"}
+              fontSize={{ base: "10px", md: "12px", lg: "14px" }}
+            >
+              {scene.pre}
             </Text>
           </Flex>
-        </Button>
+        </Card>
       </WrapItem>
     );
-  };
-
-  const mapButtons = () => {
-    const buttons = [];
-    for (let i = 1; i < 12; i++) {
-      buttons.push(renderButton(i));
-    }
-    return buttons;
   };
 
   return (
@@ -61,18 +77,18 @@ const ScenesView = ({ setScene }: ScenesViewProps) => {
       direction="column"
       width="100%"
       height="100vh"
-      alignItems="center"
-      justifyContent="space-evenly"
+      alignItems="baseline"
+      justifyContent="baseline"
     >
-      <Heading>Choose a Scenario:</Heading>
+      <Heading m={2}>Choose a Scenario:</Heading>
       <Wrap
         spacing="20px"
-        maxWidth="900px"
         alignItems="center"
         justify="center"
         width="100%"
+        m={2}
       >
-        {mapButtons()}
+        {blbScenes.map((scene) => renderButton(scene))}
       </Wrap>
     </Flex>
   );

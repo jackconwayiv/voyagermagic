@@ -1,56 +1,48 @@
 import { Flex, Heading, Wrap, WrapItem } from "@chakra-ui/react";
-import GameCard from "../components/GameCard";
-import Nexus from "../components/Nexus";
-import cards from "../data/cardConstructor";
-import testNexii from "../data/testNexii";
+import NexusCard from "../components/NexusCard";
+import { campaignDictionary } from "../data/campaignDictionary";
+import { GameState } from "../data/types";
 
 interface PlayViewProps {
-  campaign: string;
-  playerCount: number;
-  scene: number;
+  gameState: GameState;
+  setGameState: React.Dispatch<React.SetStateAction<GameState>>;
 }
 
-const PlayView = ({ campaign, playerCount, scene }: PlayViewProps) => {
+const PlayView = ({ gameState, setGameState }: PlayViewProps) => {
   return (
     <Flex direction="column" width="100%" height="100vh" alignItems="center">
-      <Flex
-        direction="row"
-        width="96%"
-        justifyContent="center"
-        border="1px black solid"
-        p={5}
-        m={5}
-      >
-        <Heading>Game Status and Navigation</Heading>
+      <Flex direction="row" width="96%" justifyContent="center">
         <Heading>
-          {JSON.stringify(campaign)} | {JSON.stringify(playerCount)} |{" "}
-          {JSON.stringify(scene)}
+          {campaignDictionary[gameState.campaign]}, Scene{" "}
+          {gameState.scene.toString()}
         </Heading>
       </Flex>
       <Flex direction="row" width="100%" height="100%">
         <Flex
-          alignItems="center"
-          justifyContent="center"
-          width="70%"
+          width="100%" //70%
           height="100%"
           direction="row"
-          border="1px black solid"
-          p={5}
-          m={5}
+          justifyContent="center"
+          p={2}
+          m={3}
         >
           <Wrap alignItems="center" justify="center" spacing="20px">
-            {testNexii.map((nexus) => (
+            {gameState.nexii.map((nexus, i) => (
               <WrapItem
                 alignItems="center"
                 justifyContent="center"
                 key={nexus.name}
               >
-                <Nexus nexus={nexus} />
+                <NexusCard
+                  gameState={gameState}
+                  setGameState={setGameState}
+                  index={i}
+                />
               </WrapItem>
             ))}
           </Wrap>
         </Flex>
-        <Flex
+        {/* <Flex
           alignItems="center"
           justifyContent="center"
           direction="column"
@@ -61,9 +53,14 @@ const PlayView = ({ campaign, playerCount, scene }: PlayViewProps) => {
           m={5}
         >
           {cards.map((card) => (
-            <GameCard playerCount={playerCount} card={card} key={card.name} />
+            <GameCard
+              // this needs to be refactored to use gameState
+              playerCount={gameState.playerCount}
+              card={card}
+              key={card.name}
+            />
           ))}
-        </Flex>
+        </Flex> */}
       </Flex>
     </Flex>
   );
