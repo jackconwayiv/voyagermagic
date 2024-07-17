@@ -1,4 +1,12 @@
-import { Card, Flex, Heading, Text, Wrap, WrapItem } from "@chakra-ui/react";
+import {
+  Button,
+  Card,
+  Flex,
+  Heading,
+  Text,
+  Wrap,
+  WrapItem,
+} from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { nexiiData } from "../data/blbNexiiData";
 import { blbScenes } from "../data/blbSceneData";
@@ -20,9 +28,39 @@ const ScenesView = ({ gameState, setGameState }: ScenesViewProps) => {
       (nexus) => nexus.campaign === gameState.campaign && nexus.scene === scene
     );
     newGameState.nexii = newNexii;
+    newGameState.sceneDetails = blbScenes.filter(
+      (sceneDetails) => sceneDetails.scene === scene
+    )[0];
     setGameState(newGameState);
-    navigate("/play");
-    //refactor to stamp scenario text onto gameState object for easy rendering in future
+  };
+
+  const renderStoryView = () => {
+    return (
+      <Flex
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        p={7}
+      >
+        <Heading size="lg" textAlign="center">
+          Scene {gameState.sceneDetails.scene}: {gameState.sceneDetails.name}
+        </Heading>
+        <Text height="100px" fontSize="20px" m={2}>
+          {gameState.sceneDetails.pre}
+        </Text>
+        <Button
+          m={2}
+          width="200px"
+          height="100px"
+          fontSize="26px"
+          disabled={gameState.sceneDetails.scene === 0}
+          bgColor={`${determineCardColors(gameState.sceneDetails.color).a}.100`}
+          onClick={() => navigate("/play")}
+        >
+          Begin Scenario
+        </Button>
+      </Flex>
+    );
   };
 
   const renderButton = (scene: Scene) => {
@@ -31,15 +69,15 @@ const ScenesView = ({ gameState, setGameState }: ScenesViewProps) => {
       <WrapItem
         key={scene.scene}
         width={{
-          base: "210px",
-          md: "260px",
-          lg: "310px",
+          base: "50px",
+          md: "100px",
+          lg: "150px",
         }}
       >
         <Card
           bgGradient={`linear(to-tr, ${colors.a}.200, ${colors.c}.200, ${colors.b}.200)`}
           onClick={() => handleClick(scene.scene)}
-          height={{ base: "200px", md: "250px", lg: "300px" }}
+          height={{ base: "25px", md: "50px", lg: "75px" }}
           width="100%"
           p={2}
         >
@@ -49,22 +87,8 @@ const ScenesView = ({ gameState, setGameState }: ScenesViewProps) => {
             justify="center"
             height="100%"
           >
-            <Text
-              flexWrap={"wrap"}
-              fontSize={{ base: "16px", md: "20px", lg: "24px" }}
-            >
-              {scene.name}
-            </Text>
             <Text m={2} fontSize={{ base: "12px", md: "16px", lg: "20px" }}>
-              {campaignDictionary[gameState.campaign]} Scene {scene.scene}
-            </Text>
-            <Text
-              flexWrap={"wrap"}
-              m={2}
-              textAlign={"justify"}
-              fontSize={{ base: "10px", md: "12px", lg: "14px" }}
-            >
-              {scene.pre}
+              Scene {scene.scene}
             </Text>
           </Flex>
         </Card>
@@ -80,7 +104,9 @@ const ScenesView = ({ gameState, setGameState }: ScenesViewProps) => {
       alignItems="baseline"
       justifyContent="baseline"
     >
-      <Heading m={2}>Choose a Scenario:</Heading>
+      <Heading m={2}>
+        Choose a {campaignDictionary[gameState.campaign]} Scenario:
+      </Heading>
       <Wrap
         spacing="20px"
         alignItems="center"
@@ -90,6 +116,7 @@ const ScenesView = ({ gameState, setGameState }: ScenesViewProps) => {
       >
         {blbScenes.map((scene) => renderButton(scene))}
       </Wrap>
+      {gameState.sceneDetails.scene !== 0 && renderStoryView()}
     </Flex>
   );
 };

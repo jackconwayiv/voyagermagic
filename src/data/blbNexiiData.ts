@@ -1,4 +1,3 @@
-
 //refactor to use class factory to spit out repeat props such as isDead, counters, etc.
 
 export const nexiiData = [

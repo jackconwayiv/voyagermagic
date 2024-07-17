@@ -29,20 +29,6 @@ export interface Nexus {
   aliveRules: string[];
   deadRules: string[];
 }
-export interface GameState {
-  isLoaded: boolean;
-  playerCount: number;
-  playerStats: Player[];
-  campaign: string;
-  scene: number;
-  nexii: Nexus[];
-}
-export interface Card {
-  name: string;
-  cost: string;
-  type: string;
-  generateText: TextGenerator;
-}
 
 export interface Scene {
   scene: number;
@@ -51,4 +37,19 @@ export interface Scene {
   pre: string;
   post: string;
   reward: string;
+}
+
+export interface GameState {
+  isLoaded: boolean;
+  playerCount: number;
+  playerStats: Player[];
+  campaign: string;
+  sceneDetails: Scene;
+  nexii: Nexus[];
+}
+export interface Card {
+  name: string;
+  cost: string;
+  type: string;
+  generateText: TextGenerator;
 }

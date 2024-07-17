@@ -8,7 +8,11 @@ interface NexusProps {
   index: number;
 }
 
-const NexusCard = ({ gameState, setGameState, index }: NexusProps) => {
+const NexusCard = ({
+  gameState,
+  setGameState,
+  index,
+}: NexusProps) => {
   const color = determineNexusColor(gameState.nexii[index].color);
 
   const handleClick = (val: number) => {

@@ -1,4 +1,5 @@
-import { Flex, Heading, Wrap, WrapItem } from "@chakra-ui/react";
+import { Button, Flex, Heading, Wrap, WrapItem } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 import NexusCard from "../components/NexusCard";
 import { campaignDictionary } from "../data/campaignDictionary";
 import { GameState } from "../data/types";
@@ -9,18 +10,20 @@ interface PlayViewProps {
 }
 
 const PlayView = ({ gameState, setGameState }: PlayViewProps) => {
+  const navigate = useNavigate();
+
   return (
     <Flex direction="column" width="100%" height="100vh" alignItems="center">
       <Flex direction="row" width="96%" justifyContent="center">
         <Heading>
           {campaignDictionary[gameState.campaign]}, Scene{" "}
-          {gameState.scene.toString()}
+          {gameState.sceneDetails.scene.toString()}:{" "}
+          {gameState.sceneDetails.name}
         </Heading>
       </Flex>
-      <Flex direction="row" width="100%" height="100%">
+      <Flex direction="row" width="100%">
         <Flex
           width="100%" //70%
-          height="100%"
           direction="row"
           justifyContent="center"
           p={2}
@@ -62,6 +65,11 @@ const PlayView = ({ gameState, setGameState }: PlayViewProps) => {
           ))}
         </Flex> */}
       </Flex>
+      {gameState.nexii.filter((nexus) => !nexus.isDead).length < 1 && (
+        <Flex>
+          <Button onClick={() => navigate("/end")}>Win Scenario</Button>
+        </Flex>
+      )}
     </Flex>
   );
 };

@@ -5,6 +5,7 @@ import { initialGameState } from "./data/initialGameState";
 import { GameState } from "./data/types";
 import "./index.css";
 import CampaignsView from "./views/CampaignsView";
+import EndView from "./views/EndView";
 import PlayView from "./views/PlayView";
 import ScenesView from "./views/ScenesView";
 import SettingsTray from "./views/SettingsTray";
@@ -57,6 +58,12 @@ function App() {
                     gameState={gameState}
                     setGameState={setGameState}
                   />
+                }
+              />
+              <Route
+                path="/end"
+                element={
+                  <EndView gameState={gameState} setGameState={setGameState} />
                 }
               />
               <Route

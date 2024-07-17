@@ -31,7 +31,14 @@ export const initialGameState = {
     },
   ],
   campaign: "BLB", //""
-  scene: 0,
+  sceneDetails: {
+    scene: 0,
+    name: "",
+    color: "",
+    pre: "",
+    post: "",
+    reward: "",
+  },
   nexii: [],
   enemyDeckZones: { library: [], inPlay: [], graveyard: [], exile: [] },
   enemyTrickZones: { library: [], inPlay: [], graveyard: [], exile: [] },
