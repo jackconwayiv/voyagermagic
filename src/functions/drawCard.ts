@@ -7,10 +7,10 @@ const drawCard = (deck: {
   inPlay: Card[];
   graveyard: Card[];
   exile: Card[];
-}) => {
+}): { deck: typeof deck; status: string } => {
   if (deck.library.length === 0) {
     if (deck.graveyard.length === 0) {
-      throw new Error("No cards left in the library and graveyard");
+      return { deck, status: "empty" }; // Indicate that both library and graveyard are empty
     }
 
     // Shuffle the graveyard and move the cards to the library
@@ -20,20 +20,17 @@ const drawCard = (deck: {
   }
 
   // Move the top card from the library (position 0) to the end of the inPlay zone
-  const updatedDeck = moveCard(
-    deck,
-    "library",
-    "inPlay",
-    0,
-    deck.inPlay.length
-  );
+  const updatedDeck = moveCard(deck, "library", "inPlay", 0, deck.inPlay.length);
 
   return {
-    ...deck,
-    library: updatedDeck.library,
-    inPlay: updatedDeck.inPlay,
-    graveyard: updatedDeck.graveyard,
-    exile: deck.exile,
+    deck: {
+      ...deck,
+      library: updatedDeck.library,
+      inPlay: updatedDeck.inPlay,
+      graveyard: updatedDeck.graveyard,
+      exile: deck.exile,
+    },
+    status: "success",
   };
 };
 

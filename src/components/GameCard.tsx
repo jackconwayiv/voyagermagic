@@ -5,21 +5,30 @@ import moveCard from "../functions/moveCard";
 
 interface GameCardProps {
   card: Card;
-  index: number; // Add index prop
+  index: number;
+  fromZone: "library" | "inPlay" | "graveyard" | "exile";
   gameState: GameState;
   setGameState: React.Dispatch<React.SetStateAction<GameState>>;
 }
 
-const GameCard = ({ card, index, gameState, setGameState }: GameCardProps) => {
+const GameCard = ({
+  card,
+  index,
+  fromZone,
+  gameState,
+  setGameState,
+}: GameCardProps) => {
   const colors = determineColors(card.cost);
 
-  const handleMoveToGraveyard = () => {
+  const handleMoveCard = (
+    toZone: "library" | "graveyard" | "exile" | "inPlay"
+  ) => {
     const updatedDeck = moveCard(
       gameState.enemyTrickZones,
-      "inPlay",
-      "graveyard",
+      fromZone,
+      toZone,
       index,
-      gameState.enemyTrickZones.graveyard.length
+      gameState.enemyTrickZones[toZone].length
     );
     setGameState((prevState) => ({
       ...prevState,
@@ -33,6 +42,7 @@ const GameCard = ({ card, index, gameState, setGameState }: GameCardProps) => {
   return (
     <Flex
       width={{ base: "175px", md: "200px", lg: "225px" }}
+      minWidth={{ base: "175px", md: "200px", lg: "225px" }}
       height={{ base: "275px", md: "300px", lg: "325px" }}
       border="1px black solid"
       borderRadius="15px"
@@ -91,17 +101,38 @@ const GameCard = ({ card, index, gameState, setGameState }: GameCardProps) => {
           </Text>
         </Flex>
         <Flex direction="row" mb={1} justifyContent="space-evenly">
+          {fromZone !== "graveyard" && (
+            <Button
+              colorScheme={colors.d}
+              size="sm"
+              onClick={() => handleMoveCard("graveyard")}
+            >
+              GR
+            </Button>
+          )}
+          {fromZone !== "exile" && (
+            <Button
+              colorScheme={colors.d}
+              size="sm"
+              onClick={() => handleMoveCard("exile")}
+            >
+              EX
+            </Button>
+          )}
+          {fromZone !== "inPlay" && (
+            <Button
+              colorScheme={colors.d}
+              size="sm"
+              onClick={() => handleMoveCard("inPlay")}
+            >
+              PL
+            </Button>
+          )}
           <Button
             colorScheme={colors.d}
             size="sm"
-            onClick={handleMoveToGraveyard}
+            onClick={() => handleMoveCard("library")}
           >
-            GR
-          </Button>
-          <Button colorScheme={colors.d} size="sm">
-            EX
-          </Button>
-          <Button colorScheme={colors.d} size="sm">
             LI
           </Button>
         </Flex>
