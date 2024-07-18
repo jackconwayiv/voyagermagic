@@ -8,11 +8,12 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { nexiiData } from "../data/blbNexiiData";
-import { blbScenes } from "../data/blbSceneData";
+import { nexiiData } from "../data/blb/blbNexiiData";
+import { blbScenes } from "../data/blb/blbSceneData";
 import { campaignDictionary } from "../data/campaignDictionary";
 import { GameState, Scene } from "../data/types";
 import determineCardColors from "../functions/determineCardColors";
+import assembleTrickDeck from "../functions/assembleTrickDeck";
 
 interface ScenesViewProps {
   gameState: GameState;
@@ -31,6 +32,7 @@ const ScenesView = ({ gameState, setGameState }: ScenesViewProps) => {
     newGameState.sceneDetails = blbScenes.filter(
       (sceneDetails) => sceneDetails.scene === scene
     )[0];
+    newGameState.enemyTrickZones.library = assembleTrickDeck(newGameState.sceneDetails)
     setGameState(newGameState);
   };
 

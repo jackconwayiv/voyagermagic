@@ -1,9 +1,19 @@
-import { Button, Flex, Heading, Wrap, WrapItem } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  Heading,
+  Text,
+  useDisclosure,
+  Wrap,
+  WrapItem,
+} from "@chakra-ui/react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import DeckDrawer from "../components/DeckDrawer";
 import NexusCard from "../components/NexusCard";
+import PlayersTray from "../components/PlayersTray";
 import { campaignDictionary } from "../data/campaignDictionary";
 import { GameState } from "../data/types";
-import PlayersTray from "../components/PlayersTray";
 
 interface PlayViewProps {
   gameState: GameState;
@@ -12,6 +22,8 @@ interface PlayViewProps {
 
 const PlayView = ({ gameState, setGameState }: PlayViewProps) => {
   const navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = React.useRef<HTMLButtonElement>(null);
 
   return (
     <Flex direction="column" width="100%" height="100vh" alignItems="center">
@@ -66,11 +78,41 @@ const PlayView = ({ gameState, setGameState }: PlayViewProps) => {
           ))}
         </Flex> */}
       </Flex>
-      {gameState.nexii.filter((nexus) => !nexus.isDead).length < 1 && (
-        <Flex>
-          <Button onClick={() => navigate("/end")}>Win Scenario</Button>
-        </Flex>
-      )}
+      <Flex direction="row" width="50%" justifyContent="space-evenly">
+        <Button
+          ref={btnRef}
+          onClick={onOpen}
+          width="50px"
+          height="50px"
+          colorScheme="orange"
+        >
+          <Text fontSize="22px">⚡</Text>
+        </Button>
+        {gameState.nexii.filter((nexus) => !nexus.isDead).length < 1 ? (
+          <Flex>
+            <Button
+              colorScheme="yellow"
+              width="150px"
+              height="50px"
+              onClick={() => navigate("/end")}
+            >
+              <Text fontSize="20px">Win Scenario</Text>
+            </Button>
+          </Flex>
+        ) : (
+          <Flex width="150px" />
+        )}
+        <Button width="50px" height="50px" colorScheme="purple">
+          <Text fontSize="22px">📖</Text>
+        </Button>
+      </Flex>
+      <DeckDrawer
+        gameState={gameState}
+        setGameState={setGameState}
+        isOpen={isOpen}
+        onClose={onClose}
+        btnRef={btnRef}
+      />
       <PlayersTray gameState={gameState} setGameState={setGameState} />
     </Flex>
   );

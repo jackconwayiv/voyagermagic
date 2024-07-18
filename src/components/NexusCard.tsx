@@ -59,9 +59,10 @@ const NexusCard = ({ gameState, setGameState, index }: NexusProps) => {
           <Heading fontSize={{ base: "18px", md: "24px", lg: "30px" }}>
             {gameState.nexii[index].name}
           </Heading>
-          <Text fontSize={{ base: "12px", md: "14px", lg: "16px" }}>
-            Enemy Nexus #{gameState.nexii[index].campaign.toLowerCase()}.
-            {gameState.nexii[index].scene}.{gameState.nexii[index].id}
+          <Text fontSize={{ base: "10px", md: "12px", lg: "14px" }}>
+            Enemy Nexus #{gameState.nexii[index].campaign}
+            {gameState.nexii[index].scene}
+            {gameState.nexii[index].id}
           </Text>
         </Flex>
         <Flex direction="row" justifyContent="center">
@@ -71,8 +72,7 @@ const NexusCard = ({ gameState, setGameState, index }: NexusProps) => {
           direction="row"
           justifyContent="space-evenly"
           alignItems="center"
-          m={2}
-          p={2}
+          m={1}
         >
           <Button
             colorScheme={color}
@@ -115,7 +115,7 @@ const NexusCard = ({ gameState, setGameState, index }: NexusProps) => {
               <Text
                 key={i}
                 p={2}
-                m={2}
+                m={1}
                 textAlign="justify"
                 fontSize={{ base: "14px", md: "18px", lg: "20px" }}
               >

@@ -1,5 +1,3 @@
-import { TextGenerator } from "./cardConstructor";
-
 export interface Counter {
   name: string;
   count: number;
@@ -39,6 +37,21 @@ export interface Scene {
   reward: string;
 }
 
+export interface TextGenerator {
+  (gameState: GameState): string;
+}
+export interface Card {
+  name: string;
+  cost: string;
+  type: string;
+  generateText: TextGenerator;
+}
+export interface Deck {
+  library: Card[];
+  inPlay: Card[];
+  graveyard: Card[];
+  exile: Card[];
+}
 export interface GameState {
   isLoaded: boolean;
   playerCount: number;
@@ -46,10 +59,6 @@ export interface GameState {
   campaign: string;
   sceneDetails: Scene;
   nexii: Nexus[];
-}
-export interface Card {
-  name: string;
-  cost: string;
-  type: string;
-  generateText: TextGenerator;
+  enemyDeckZones: Deck;
+  enemyTrickZones: Deck;
 }

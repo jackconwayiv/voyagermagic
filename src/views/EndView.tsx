@@ -1,8 +1,9 @@
 import { Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { nexiiData } from "../data/blbNexiiData";
-import { blbScenes } from "../data/blbSceneData";
+import { nexiiData } from "../data/blb/blbNexiiData";
+import { blbScenes } from "../data/blb/blbSceneData";
 import { GameState } from "../data/types";
+import assembleTrickDeck from "../functions/assembleTrickDeck";
 import determineCardColors from "../functions/determineCardColors";
 
 interface PlayViewProps {
@@ -14,6 +15,7 @@ const EndView = ({ gameState, setGameState }: PlayViewProps) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
+    //refactor this to match settingstray and scenesview
     const newGameState = { ...gameState };
     const newSceneDetails =
       blbScenes.filter(
@@ -25,6 +27,7 @@ const EndView = ({ gameState, setGameState }: PlayViewProps) => {
         nexus.campaign === gameState.campaign &&
         nexus.scene === newSceneDetails.scene
     );
+    newGameState.enemyTrickZones.library = assembleTrickDeck(newSceneDetails);
     setGameState({
       ...newGameState,
       sceneDetails: newSceneDetails,

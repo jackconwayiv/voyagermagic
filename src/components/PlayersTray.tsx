@@ -26,7 +26,7 @@ const PlayersTray = ({ gameState, setGameState }: PlayersTrayProps) => {
         cursor="pointer"
         onClick={() => handleClick(index)}
       >
-        <Text>{player.name}</Text>
+        <Text textAlign="center">{player.name.toUpperCase()}</Text>
         <Flex direction="row" justifyContent="space-evenly">
           <Text>❤️ {player.life}</Text> <Spacer /> <Text>💰 {player.tax}</Text>
         </Flex>

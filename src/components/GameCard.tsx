@@ -1,18 +1,39 @@
 import { Button, Flex, Heading, Text } from "@chakra-ui/react";
-import { Card } from "../data/types";
+import { Card, GameState } from "../data/types";
 import determineColors from "../functions/determineCardColors";
+import moveCard from "../functions/moveCard";
 
 interface GameCardProps {
   card: Card;
-  playerCount: number;
+  index: number; // Add index prop
+  gameState: GameState;
+  setGameState: React.Dispatch<React.SetStateAction<GameState>>;
 }
 
-const GameCard = ({ card, playerCount }: GameCardProps) => {
+const GameCard = ({ card, index, gameState, setGameState }: GameCardProps) => {
   const colors = determineColors(card.cost);
+
+  const handleMoveToGraveyard = () => {
+    const updatedDeck = moveCard(
+      gameState.enemyTrickZones,
+      "inPlay",
+      "graveyard",
+      index,
+      gameState.enemyTrickZones.graveyard.length
+    );
+    setGameState((prevState) => ({
+      ...prevState,
+      enemyTrickZones: {
+        ...prevState.enemyTrickZones,
+        ...updatedDeck,
+      },
+    }));
+  };
+
   return (
     <Flex
-      width={{ base: "200px", md: "250px", lg: "300px" }}
-      height={{ base: "300px", md: "350px", lg: "400px" }}
+      width={{ base: "175px", md: "200px", lg: "225px" }}
+      height={{ base: "275px", md: "300px", lg: "325px" }}
       border="1px black solid"
       borderRadius="15px"
       direction="column"
@@ -32,13 +53,13 @@ const GameCard = ({ card, playerCount }: GameCardProps) => {
           direction="row"
           justifyContent="space-between"
           bgColor={colors.a + `.50`}
-          m={2}
-          p={3}
+          m={1}
+          p={1}
         >
-          <Heading fontSize={{ base: "18px", md: "20px", lg: "24px" }}>
+          <Heading fontSize={{ base: "12px", md: "14px", lg: "16px" }}>
             {card.name}
           </Heading>
-          <Text fontSize={{ base: "14px", md: "18px", lg: "20px" }}>
+          <Text fontSize={{ base: "8px", md: "10px", lg: "12px" }}>
             {card.cost}
           </Text>
         </Flex>
@@ -46,11 +67,11 @@ const GameCard = ({ card, playerCount }: GameCardProps) => {
           border="1px black solid"
           direction="row"
           justifyContent="center"
-          m={2}
-          p={3}
+          m={1}
+          p={1}
           bgColor={colors.b + `.50`}
         >
-          <Text fontSize={{ base: "12px", md: "16px", lg: "18px" }}>
+          <Text fontSize={{ base: "10px", md: "12px", lg: "14px" }}>
             {card.type}
           </Text>
         </Flex>
@@ -58,21 +79,28 @@ const GameCard = ({ card, playerCount }: GameCardProps) => {
         <Flex
           bgColor={colors.c + `.50`}
           border="1px black solid"
-          m={2}
-          p={3}
+          m={1}
+          p={2}
           height="100%"
         >
-          <Text fontSize={{ base: "14px", md: "18px", lg: "20px" }}>
-            {card.generateText(playerCount)}
+          <Text
+            textAlign="justify"
+            fontSize={{ base: "11px", md: "13px", lg: "15px" }}
+          >
+            {card.generateText(gameState)}
           </Text>
         </Flex>
-        <Flex direction="row" mb={2} justifyContent="space-evenly">
-          <Button colorScheme={colors.d} size="sm">
+        <Flex direction="row" mb={1} justifyContent="space-evenly">
+          <Button
+            colorScheme={colors.d}
+            size="sm"
+            onClick={handleMoveToGraveyard}
+          >
             GR
-          </Button>{" "}
+          </Button>
           <Button colorScheme={colors.d} size="sm">
             EX
-          </Button>{" "}
+          </Button>
           <Button colorScheme={colors.d} size="sm">
             LI
           </Button>

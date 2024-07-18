@@ -1,9 +1,10 @@
 import { Button, Flex, Select, Text } from "@chakra-ui/react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { nexiiData } from "../data/blbNexiiData";
-import { blbScenes } from "../data/blbSceneData";
+import { nexiiData } from "../data/blb/blbNexiiData";
+import { blbScenes } from "../data/blb/blbSceneData";
 import { campaignDictionary } from "../data/campaignDictionary";
 import { GameState } from "../data/types";
+import assembleTrickDeck from "../functions/assembleTrickDeck";
 
 interface SettingsTrayProps {
   gameState: GameState;
@@ -33,6 +34,9 @@ const SettingsTray = ({ gameState, setGameState }: SettingsTrayProps) => {
         nexus.campaign === gameState.campaign && nexus.scene === scenario
     );
     newGameState.nexii = newNexii;
+    newGameState.enemyTrickZones.library = assembleTrickDeck(
+      newGameState.sceneDetails
+    );
     setGameState(newGameState);
   };
 

@@ -1,11 +1,4 @@
-export interface TextGenerator {
-  (
-    roundNumber: number,
-    defeatedCount?: number,
-    landCount?: number,
-    playerCount?: number
-  ): string;
-}
+import { TextGenerator } from "./types";
 
 class Card {
   name: string;
@@ -31,24 +24,14 @@ const cards: Card[] = [
     "Crop of Warriors",
     "4WW",
     "Creature Summon",
-    (
-      // roundNumber
-      // defeatedCount
-      // landCount,
-      playerCount
-    ) =>
-      `Encounter ${playerCount} 2/2 white Soldier creature tokens with vigilance.`
+    (gameState) =>
+      `Encounter ${gameState.playerCount} 2/2 white Soldier creature tokens with vigilance.`
   ),
   new Card(
     "Wrath of the Gods",
     "2WW",
     "Sorcery",
-    () =>
-      // roundNumber
-      // defeatedCount
-      // landCount,
-      // playerCount
-      `Destroy all creatures. They can't be regenerated.`
+    () => `Destroy all creatures. They can't be regenerated.`
   ),
 ];
 export default cards;
