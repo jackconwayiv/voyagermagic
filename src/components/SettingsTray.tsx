@@ -37,7 +37,13 @@ const SettingsTray = ({ gameState, setGameState }: SettingsTrayProps) => {
   };
 
   return (
-    <Flex direction="row" width="100%" p={3} justifyContent="space-between">
+    <Flex
+      direction="row"
+      width="100%"
+      p={3}
+      alignItems="center"
+      justifyContent="space-between"
+    >
       <Flex>
         <Button
           // disabled={location.pathname === "/"}

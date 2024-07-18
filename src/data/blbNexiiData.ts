@@ -31,7 +31,7 @@ export const nexiiData = [
     counters: [],
     aliveRules: [
       "⚔️ Whenever a creature strikes me, tap and stun that creature.",
-      "⏳ On upkeep, I gain 1 life for each tapped player creature.",
+      // "⏳ On upkeep, I gain 1 life for each tapped player creature.",
     ],
     deadRules: [""],
   },

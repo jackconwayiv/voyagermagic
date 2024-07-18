@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import NexusCard from "../components/NexusCard";
 import { campaignDictionary } from "../data/campaignDictionary";
 import { GameState } from "../data/types";
+import PlayersTray from "../components/PlayersTray";
 
 interface PlayViewProps {
   gameState: GameState;
@@ -70,6 +71,7 @@ const PlayView = ({ gameState, setGameState }: PlayViewProps) => {
           <Button onClick={() => navigate("/end")}>Win Scenario</Button>
         </Flex>
       )}
+      <PlayersTray gameState={gameState} setGameState={setGameState} />
     </Flex>
   );
 };

@@ -8,11 +8,7 @@ interface NexusProps {
   index: number;
 }
 
-const NexusCard = ({
-  gameState,
-  setGameState,
-  index,
-}: NexusProps) => {
+const NexusCard = ({ gameState, setGameState, index }: NexusProps) => {
   const color = determineNexusColor(gameState.nexii[index].color);
 
   const handleClick = (val: number) => {
@@ -32,7 +28,7 @@ const NexusCard = ({
 
   return (
     <Flex
-      height={{ base: "400px", md: "500px", lg: "600px" }}
+      height={{ base: "375px", md: "425px", lg: "475px" }}
       width={{ base: "300px", md: "350px", lg: "400px" }}
       border={
         gameState.nexii[index].isDead ? `1px gray dotted` : `1px black solid`

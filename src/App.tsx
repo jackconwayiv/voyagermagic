@@ -8,7 +8,7 @@ import CampaignsView from "./views/CampaignsView";
 import EndView from "./views/EndView";
 import PlayView from "./views/PlayView";
 import ScenesView from "./views/ScenesView";
-import SettingsTray from "./views/SettingsTray";
+import SettingsTray from "./components/SettingsTray";
 import WelcomePage from "./views/WelcomePage";
 
 function App() {
