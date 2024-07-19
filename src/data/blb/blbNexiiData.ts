@@ -45,9 +45,9 @@ export const nexiiData = [
     isMonarch: false,
     counters: [],
     aliveRules: [
-      "♾️ Whenever a foe strikes a player creature, prevent 1 of that damage and wound that creature.",
+      "⚔️ Whenever a foe strikes a player creature, prevent 1 of that damage and wound that creature.",
     ],
-    deadRules: [""],
+    deadRules: ["♾️ Wounded creatures can't block alone."],
   },
   {
     campaign: "BLB",
@@ -63,7 +63,7 @@ export const nexiiData = [
     aliveRules: [
       "⏳ On upkeep, each player rolls a d6. On 1 or 2, that player puts a shield counter on a foe they're facing (without a shield counter).",
     ],
-    deadRules: [""],
+    deadRules: ["⚔️ Prevent all combat damage that would be dealt to foes with shield counters.", "⚔️ Foes with shield counters have double strike."],
   },
   {
     campaign: "BLB",

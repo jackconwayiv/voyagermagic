@@ -26,6 +26,27 @@ const NexusCard = ({ gameState, setGameState, index }: NexusProps) => {
     setGameState(newGameState);
   };
 
+  const renderText = () => {
+    const activeRules = gameState.nexii[index].isDead
+      ? gameState.nexii[index].deadRules
+      : gameState.nexii[index].aliveRules;
+    return (
+      <>
+        {activeRules.map((rule, i) => (
+          <Text
+            key={i}
+            p={1}
+            m={1}
+            textAlign="justify"
+            fontSize={{ base: "14px", md: "18px", lg: "20px" }}
+          >
+            {rule}
+          </Text>
+        ))}
+      </>
+    );
+  };
+
   return (
     <Flex
       height={{ base: "350px", md: "400px", lg: "450px" }}
@@ -107,21 +128,11 @@ const NexusCard = ({ gameState, setGameState, index }: NexusProps) => {
               : `1px black solid`
           }
           borderRadius="15px"
-          bgColor={gameState.nexii[index].isDead ? `silver` : `white`}
+          bgColor={gameState.nexii[index].isDead ? `#DDDDDD` : `white`}
           m={2}
         >
           <Flex direction="column" m={1}>
-            {gameState.nexii[index].aliveRules.map((rule, i) => (
-              <Text
-                key={i}
-                p={1}
-                m={1}
-                textAlign="justify"
-                fontSize={{ base: "14px", md: "18px", lg: "20px" }}
-              >
-                {rule}
-              </Text>
-            ))}
+            {renderText()}
           </Flex>
         </Flex>
       </Flex>
