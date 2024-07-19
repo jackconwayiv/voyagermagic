@@ -3,6 +3,38 @@
 export const nexiiData = [
   {
     campaign: "BLB",
+    scene: 7,
+    id: "a",
+    name: "Steaming Breath",
+    color: "U",
+    life: 20,
+    isDead: false,
+    isEnraged: false,
+    isMonarch: false,
+    counters: [],
+    aliveRules: [
+      "⚔️ At the end of combat, roll a d6 for each creature that struck me. On a 1 or 2, return that creature to its owner's hand.",
+    ],
+    deadRules: [""],
+  },
+  {
+    campaign: "BLB",
+    scene: 7,
+    id: "b",
+    name: "Flaming Paws",
+    color: "R",
+    life: 20,
+    isDead: false,
+    isEnraged: false,
+    isMonarch: false,
+    counters: [],
+    aliveRules: [
+      "⏳ On upkeep, each player rolls a d6. On 1 or 2, that player must blight an (unblighted nonbasic) land they control.",
+    ],
+    deadRules: [""],
+  },
+  {
+    campaign: "BLB",
     scene: 6,
     id: "a",
     name: "Venomous Teeth",
@@ -13,7 +45,7 @@ export const nexiiData = [
     isMonarch: false,
     counters: [],
     aliveRules: [
-      "♾️ Whenever a foe strikes a player creature, wound that creature.",
+      "♾️ Whenever a foe strikes a player creature, prevent 1 of that damage and wound that creature.",
     ],
     deadRules: [""],
   },

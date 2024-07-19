@@ -57,14 +57,16 @@ const EndView = ({ gameState, setGameState }: PlayViewProps) => {
         Victory in Scene {gameState.sceneDetails.scene}:{" "}
         {gameState.sceneDetails.name}
       </Heading>
-      <Text fontSize="14px" p={6} color="gray">
+      <Text fontSize="14px" p={6} color="gray" textAlign="justify">
         {gameState.sceneDetails.pre}
       </Text>
       <Flex height="200px" alignItems="center" p={3} border="1px black solid">
-        <Text fontSize="28px">{gameState.sceneDetails.post}</Text>
+        <Text textAlign="justify" fontSize="28px">
+          {gameState.sceneDetails.post}
+        </Text>
       </Flex>
-      <Text fontSize="40px" p={3} textAlign="center">
-        Reward: {gameState.sceneDetails.reward}
+      <Text fontSize="24px" p={3} textAlign="justify">
+        REWARDS: {gameState.sceneDetails.reward}
       </Text>
       <Flex p={3} justifyContent="center">
         <Button
@@ -73,7 +75,7 @@ const EndView = ({ gameState, setGameState }: PlayViewProps) => {
           bgColor={`${determineCardColors(gameState.sceneDetails.color).a}.200`}
           onClick={handleClick}
           fontSize="20px"
-          m={10}
+          m={3}
         >
           Return to Campaign Lobby
         </Button>

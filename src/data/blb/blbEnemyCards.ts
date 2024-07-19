@@ -1,5 +1,16 @@
 import { Card } from "../types";
 
+//WU is moths
+//UB is snails
+//BR is porcupines
+//RG is badgers
+//GW is armadillos
+//WB is weasels
+//UR is foxes
+//BG is snakes
+//RW is voles
+//GU is beavers
+
 const blbEnemyCards: Card[] = [
   {
     name: "Brazen Bladeblinder",
@@ -188,7 +199,7 @@ const blbEnemyCards: Card[] = [
     cost: "3G",
     type: "Enchantment",
     generateText: () =>
-      `Encounter a "Nature's Might" enchantment token with: "On enemy upkeep, put a +1/+1 counter on each foe you're facing." Then trigger its ability once.`,
+      `Encounter a "Nature's Might" enchantment token with: "Your foes enter with an additional +1/+1 counter on them." Then put a +1/+1 counter on each foe you're facing.`,
   },
   {
     name: "Woe Ring",

@@ -44,8 +44,17 @@ export const blbScenes = [
     name: "The Neststalker Serpent",
     color: "BG",
     pre: "Three Tree City is home to all the various kin to be found in Valley, not the least of these the birds who delight in the capacious branches of the Three Trees. But their nests are under seige by a slithering calamity beast who is creating quite a ruckus...",
-    post: "With the serpent felled, the city resumes an uneasy rhythm. The birdfolk scouts mention that the lizards have seemed unusually ill-at-ease in their rocky homeland and the situation might warrant an investigation...",
+    post: "With the serpent felled, the city resumes an uneasy rhythm. The birdfolk scouts mention that the rabbits have seemed unusually ill-at-ease in their grassy homeland and the situation might warrant an investigation...",
     reward:
-      "From 40 to 41 cards: +1 land. The party gains `Gift of the Birds`.",
+      "The party gains `Gift of the Birds` and each player may start each subsequent scenario with up to one Gift in play. Deck grows from 40 to 41 cards: add 1 land. Each player may add a copy of 'Three Tree City' to your deck. You may now freely interchange any number of commons or uncommons in your deck between scenarios.",
+  },
+  {
+    scene: 7,
+    name: "The Prowling Coyote",
+    color: "UR",
+    pre: "The rabbits are nowhere to be found, and a brisk knock upon their brightly painted doors yields no hospitality. But its soon apparent why -- a fierce elemental coyote, gushing steam and flames, is prowling the grasslands!",
+    post: "The rabbits emerge, offer you their gratitude, and a tidbit of very interesting information: a frazzled frog-folk arrived to the village recently and, after some tears, whisked several local adventurers away on a quest. They were last seen heading toward the home of the raccoons... ",
+    reward:
+      "The party gains `Gift of the Rabbits.` Unlock rares. Deck grows from 41 to 42 cards: add 1 rare.",
   },
 ];
