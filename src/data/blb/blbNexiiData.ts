@@ -29,7 +29,7 @@ export const nexiiData = [
     isMonarch: false,
     counters: [],
     aliveRules: [
-      "⏳ On upkeep, each player rolls a d6. On 1, that player puts a shield counter on a foe they're facing.",
+      "⏳ On upkeep, each player rolls a d6. On 1 or 2, that player puts a shield counter on a foe they're facing (without a shield counter).",
     ],
     deadRules: [""],
   },
