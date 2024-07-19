@@ -14,6 +14,7 @@ import { campaignDictionary } from "../data/campaignDictionary";
 import { GameState, Scene } from "../data/types";
 import assembleTrickDeck from "../functions/assembleTrickDeck";
 import determineCardColors from "../functions/determineCardColors";
+import { useEffect } from "react";
 
 interface ScenesViewProps {
   gameState: GameState;
@@ -38,7 +39,13 @@ const ScenesView = ({ gameState, setGameState }: ScenesViewProps) => {
     setGameState(newGameState);
   };
 
+  useEffect(() => {
+    if (gameState.campaign === "")
+      navigate("/");
+  }, [gameState]);
+
   const renderStoryView = () => {
+    const colors = determineCardColors(gameState.sceneDetails.color);
     return (
       <Flex
         direction="column"
@@ -54,14 +61,14 @@ const ScenesView = ({ gameState, setGameState }: ScenesViewProps) => {
         </Text>
         <Button
           m={2}
-          width="200px"
+          width="250px"
           height="100px"
           fontSize="26px"
           disabled={gameState.sceneDetails.scene === 0}
-          bgColor={`${determineCardColors(gameState.sceneDetails.color).a}.100`}
+          bgGradient={`linear(to-tr, ${colors.a}.200, ${colors.c}.200, ${colors.b}.200)`}
           onClick={() => navigate("/play")}
         >
-          Begin Scenario
+          Begin Scenario {gameState.sceneDetails.scene}
         </Button>
       </Flex>
     );
@@ -73,9 +80,9 @@ const ScenesView = ({ gameState, setGameState }: ScenesViewProps) => {
       <WrapItem
         key={scene.scene}
         width={{
-          base: "50px",
-          md: "100px",
-          lg: "150px",
+          base: "75px",
+          md: "125px",
+          lg: "175px",
         }}
       >
         <Card

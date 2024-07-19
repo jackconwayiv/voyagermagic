@@ -3,6 +3,38 @@
 export const nexiiData = [
   {
     campaign: "BLB",
+    scene: 6,
+    id: "a",
+    name: "Venomous Teeth",
+    color: "B",
+    life: 20,
+    isDead: false,
+    isEnraged: false,
+    isMonarch: false,
+    counters: [],
+    aliveRules: [
+      "♾️ Whenever a foe strikes a player creature, wound that creature.",
+    ],
+    deadRules: [""],
+  },
+  {
+    campaign: "BLB",
+    scene: 6,
+    id: "b",
+    name: "Thick Scales",
+    color: "G",
+    life: 20,
+    isDead: false,
+    isEnraged: false,
+    isMonarch: false,
+    counters: [],
+    aliveRules: [
+      "⏳ On upkeep, each player rolls a d6. On 1, that player puts a shield counter on a foe they're facing.",
+    ],
+    deadRules: [""],
+  },
+  {
+    campaign: "BLB",
     scene: 5,
     id: "a",
     name: "Muckwallow",

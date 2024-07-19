@@ -1,7 +1,7 @@
 export const blbScenes = [
   {
     scene: 1,
-    name: "Save Mudflat Village!",
+    name: "Save Mudflat Village",
     color: "B",
     pre: "The marshlands of Mudflat Village are under attack! A calamity beast made of pure tar has appeared, covering the land with bubbling muck and trapping the residents in tar bubbles! You are young and inexperienced, but you can't stand by while others suffer!",
     post: "Miraculously, you drive back the calamity beast and with it the gurgling font of tar that has gunked up the entire village of Mudflat. The residents thank you with praise and coin, and set to work cleaning up the mess.",
@@ -9,7 +9,7 @@ export const blbScenes = [
   },
   {
     scene: 2,
-    name: "Save Rockface Village!",
+    name: "Save Rockface Village",
     color: "R",
     pre: "There's little time to rest, however, as a geyser of boiling hot water has erupted near Rockface Village, and from that geyser spawned an elemental snake of pure scalding mist! It hisses and slithers around the hilltop homes, driving the fearful inhabitants of the village behind locked doors in fright!",
     post: "You've done it again! Despite being wet behind the ears (or gills), you manage to stave off the calamity beast and save the residents of Rockface Village! They form a bucket brigade to put out the fires that have erupted everywhere, and you press on!",
@@ -17,7 +17,7 @@ export const blbScenes = [
   },
   {
     scene: 3,
-    name: "Save Oakhollow Village!",
+    name: "Save Oakhollow Village",
     color: "G",
     pre: "It's beginning to look like an alarming pattern - yet another calamity beast has emerged, this time in Oakhollow Village! This one is a massive elemental porcupine, spined with thorny vines that lash out at anyone who draws near. Steel yourself and draw upon your inner mettle to quell this quillback!",
     post: "The ferocious thorny porcupine shudders and dissipates into a massive coil of prickly vines. The Oakhollow residents emerge with brooms and dustpans, rakes, and threshing scythes to help clear the debris, all the while singing your praises!",
@@ -25,7 +25,7 @@ export const blbScenes = [
   },
   {
     scene: 4,
-    name: "Save Lupinflower Village!",
+    name: "Save Lupinflower Village",
     color: "W",
     pre: "Lupinflower Village is known throughout Valley as one of the most peaceful places there is. But that peace has been shattered by an elemental queen bee made of honey and pollen! Sneezing and sniffling rabbits, mice, birds, and bats take cover in their homes, and it's up to you to block this histamine threat!",
     post: "The bees have buzzed their last, and as the cloud of pollen dissipates, the residents of the village emerge from their homes, eyes red with allergens and tears of gratitude. You're starting to make a name for yourselves among the villages of Bloomburrow!",
@@ -33,10 +33,19 @@ export const blbScenes = [
   },
   {
     scene: 5,
-    name: "Save Lilypad Village!",
+    name: "Save Lilypad Village",
     color: "U",
     pre: "A calamitous catfish made of mud has been spotted in the wetlands near Lilypad Village, capsizing fishing boats and causing no end of trouble for the locals. By now you get the drill. Engage in battle with this beast, learn its weaknesses, and dispatch it quickly, before any more innocent fisherfolk have to suffer!",
-    post: "The catfish sinks to the seabed, never to rise again. These elemental calamity beasts have been nuisances, but something tells you there's an even larger, more sinister force at work behind their appearance... you head to Three Tree City to learn more.",
+    post: "The catfish sinks to the seabed, never to rise again. These elemental calamity beasts have been nuisances, but something tells you there's an even larger, more sinister force at work behind their appearance. You head to Three Tree City to learn more...",
     reward: "From 38 to 40 cards: +2 uncommons.",
+  },
+  {
+    scene: 6,
+    name: "The Neststalker Serpent",
+    color: "BG",
+    pre: "Three Tree City is home to all the various kin to be found in Valley, not the least of these the birds who delight in the capacious branches of the Three Trees. But their nests are under seige by a slithering calamity beast who is creating quite a ruckus...",
+    post: "With the serpent felled, the city resumes an uneasy rhythm. The birdfolk scouts mention that the lizards have seemed unusually ill-at-ease in their rocky homeland and the situation might warrant an investigation...",
+    reward:
+      "From 40 to 41 cards: +1 land. The party gains `Gift of the Birds`.",
   },
 ];

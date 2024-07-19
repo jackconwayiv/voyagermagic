@@ -28,7 +28,7 @@ const NexusCard = ({ gameState, setGameState, index }: NexusProps) => {
 
   return (
     <Flex
-      height={{ base: "375px", md: "425px", lg: "475px" }}
+      height={{ base: "350px", md: "400px", lg: "450px" }}
       width={{ base: "300px", md: "350px", lg: "400px" }}
       border={
         gameState.nexii[index].isDead ? `1px gray dotted` : `1px black solid`
@@ -98,9 +98,9 @@ const NexusCard = ({ gameState, setGameState, index }: NexusProps) => {
         <Flex
           direction="row"
           justifyContent="center"
-          alignItems="baseline"
+          alignItems="center"
           width="95%"
-          height="95%"
+          height="60%"
           border={
             gameState.nexii[index].isDead
               ? `1px gray dotted`
@@ -110,11 +110,11 @@ const NexusCard = ({ gameState, setGameState, index }: NexusProps) => {
           bgColor={gameState.nexii[index].isDead ? `silver` : `white`}
           m={2}
         >
-          <Flex direction="column">
+          <Flex direction="column" m={1}>
             {gameState.nexii[index].aliveRules.map((rule, i) => (
               <Text
                 key={i}
-                p={2}
+                p={1}
                 m={1}
                 textAlign="justify"
                 fontSize={{ base: "14px", md: "18px", lg: "20px" }}
