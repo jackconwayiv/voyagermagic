@@ -108,6 +108,7 @@ const DeckDrawer = ({
                   card={card}
                   index={i}
                   fromZone={selectedZone}
+                  deckType={deckType} // Pass the deckType prop
                   gameState={gameState}
                   setGameState={setGameState}
                 />

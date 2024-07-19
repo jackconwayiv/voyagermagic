@@ -9,6 +9,7 @@ interface GameCardProps {
   fromZone: "library" | "inPlay" | "graveyard" | "exile";
   gameState: GameState;
   setGameState: React.Dispatch<React.SetStateAction<GameState>>;
+  deckType: "enemyDeckZones" | "enemyTrickZones";
 }
 
 const GameCard = ({
@@ -17,6 +18,7 @@ const GameCard = ({
   fromZone,
   gameState,
   setGameState,
+  deckType,
 }: GameCardProps) => {
   const colors = determineColors(card.cost);
 
@@ -24,16 +26,16 @@ const GameCard = ({
     toZone: "library" | "graveyard" | "exile" | "inPlay"
   ) => {
     const updatedDeck = moveCard(
-      gameState.enemyTrickZones,
+      gameState[deckType], // Use the deckType prop to get the correct deck
       fromZone,
       toZone,
       index,
-      gameState.enemyTrickZones[toZone].length
+      gameState[deckType][toZone].length
     );
     setGameState((prevState) => ({
       ...prevState,
-      enemyTrickZones: {
-        ...prevState.enemyTrickZones,
+      [deckType]: {
+        ...prevState[deckType],
         ...updatedDeck,
       },
     }));
@@ -95,7 +97,7 @@ const GameCard = ({
         >
           <Text
             textAlign="justify"
-            fontSize={{ base: "11px", md: "13px", lg: "15px" }}
+            fontSize={{ base: "10px", md: "12px", lg: "14px" }}
           >
             {card.generateText(gameState)}
           </Text>

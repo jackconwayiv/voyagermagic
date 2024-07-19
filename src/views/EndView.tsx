@@ -2,8 +2,12 @@ import { Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { nexiiData } from "../data/blb/blbNexiiData";
 import { blbScenes } from "../data/blb/blbSceneData";
+import { initialDeckStats } from "../data/initialGameState";
 import { GameState } from "../data/types";
-import assembleTrickDeck from "../functions/assembleTrickDeck";
+import {
+  assembleEnemyDeck,
+  assembleTrickDeck,
+} from "../functions/assembleTrickDeck";
 import determineCardColors from "../functions/determineCardColors";
 
 interface PlayViewProps {
@@ -27,11 +31,22 @@ const EndView = ({ gameState, setGameState }: PlayViewProps) => {
         nexus.campaign === gameState.campaign &&
         nexus.scene === newSceneDetails.scene
     );
-    newGameState.enemyTrickZones.library = assembleTrickDeck(newSceneDetails);
+
+    const newEnemyTrickZones = {
+      ...initialDeckStats,
+      library: assembleTrickDeck(newSceneDetails),
+    };
+    const newEnemyDeckZones = {
+      ...initialDeckStats,
+      library: assembleEnemyDeck(newSceneDetails),
+    };
+
     setGameState({
       ...newGameState,
       sceneDetails: newSceneDetails,
       nexii: newNexii,
+      enemyTrickZones: newEnemyTrickZones,
+      enemyDeckZones: newEnemyDeckZones,
     });
     navigate("/scenes");
   };

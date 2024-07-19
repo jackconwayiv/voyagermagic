@@ -3,8 +3,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { nexiiData } from "../data/blb/blbNexiiData";
 import { blbScenes } from "../data/blb/blbSceneData";
 import { campaignDictionary } from "../data/campaignDictionary";
+import { initialDeckStats } from "../data/initialGameState";
 import { GameState } from "../data/types";
-import assembleTrickDeck from "../functions/assembleTrickDeck";
+import {
+  assembleEnemyDeck,
+  assembleTrickDeck,
+} from "../functions/assembleTrickDeck";
 
 interface SettingsTrayProps {
   gameState: GameState;
@@ -34,9 +38,16 @@ const SettingsTray = ({ gameState, setGameState }: SettingsTrayProps) => {
         nexus.campaign === gameState.campaign && nexus.scene === scenario
     );
     newGameState.nexii = newNexii;
-    newGameState.enemyTrickZones.library = assembleTrickDeck(
-      newGameState.sceneDetails
-    );
+
+    newGameState.enemyTrickZones = {
+      ...initialDeckStats,
+      library: assembleTrickDeck(newGameState.sceneDetails),
+    };
+    newGameState.enemyDeckZones = {
+      ...initialDeckStats,
+      library: assembleEnemyDeck(newGameState.sceneDetails),
+    };
+
     setGameState(newGameState);
   };
 

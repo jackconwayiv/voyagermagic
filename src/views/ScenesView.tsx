@@ -7,14 +7,18 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { nexiiData } from "../data/blb/blbNexiiData";
 import { blbScenes } from "../data/blb/blbSceneData";
 import { campaignDictionary } from "../data/campaignDictionary";
+import { initialDeckStats } from "../data/initialGameState";
 import { GameState, Scene } from "../data/types";
-import assembleTrickDeck from "../functions/assembleTrickDeck";
+import {
+  assembleEnemyDeck,
+  assembleTrickDeck,
+} from "../functions/assembleTrickDeck";
 import determineCardColors from "../functions/determineCardColors";
-import { useEffect } from "react";
 
 interface ScenesViewProps {
   gameState: GameState;
@@ -33,15 +37,20 @@ const ScenesView = ({ gameState, setGameState }: ScenesViewProps) => {
     newGameState.sceneDetails = blbScenes.filter(
       (sceneDetails) => sceneDetails.scene === scene
     )[0];
-    newGameState.enemyTrickZones.library = assembleTrickDeck(
-      newGameState.sceneDetails
-    );
+
+    newGameState.enemyTrickZones = {
+      ...initialDeckStats,
+      library: assembleTrickDeck(newGameState.sceneDetails),
+    };
+    newGameState.enemyDeckZones = {
+      ...initialDeckStats,
+      library: assembleEnemyDeck(newGameState.sceneDetails),
+    };
     setGameState(newGameState);
   };
 
   useEffect(() => {
-    if (gameState.campaign === "")
-      navigate("/");
+    if (gameState.campaign === "") navigate("/");
   }, [gameState]);
 
   const renderStoryView = () => {

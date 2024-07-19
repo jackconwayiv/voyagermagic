@@ -14,6 +14,11 @@ const moveCard = (
     return deck; // No movement needed if the card is being moved to the same position in the same zone
   }
 
+  // Ensure the fromPosition is within bounds
+  if (fromPosition < 0 || fromPosition >= deck[fromZone].length) {
+    throw new Error("Position out of bounds");
+  }
+
   // Determine the card to be moved
   const cardToMove = deck[fromZone][fromPosition];
 

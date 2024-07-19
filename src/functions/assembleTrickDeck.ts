@@ -1,8 +1,9 @@
+import blbEnemyCards from "../data/blb/blbEnemyCards";
 import blbTricks from "../data/blb/blbTrickCards";
 import { Scene } from "../data/types";
 import shuffleDeck from "./shuffleDeck";
 
-const assembleTrickDeck = (scene: Scene) => {
+export const assembleTrickDeck = (scene: Scene) => {
   const blankCard = {
     name: "All Clear",
     cost: "",
@@ -12,9 +13,12 @@ const assembleTrickDeck = (scene: Scene) => {
 
   const sceneColorsArray = scene.color.split("");
 
+  // Filter the trick deck based on scene colors
   const trickDeck = blbTricks.filter((card) =>
     sceneColorsArray.some((color) => card.cost.includes(color))
   );
+
+  // Add blank cards to the deck
   const trickLength = trickDeck.length;
   for (let i = 0; i < trickLength; i++) {
     trickDeck.push(blankCard);
@@ -22,7 +26,17 @@ const assembleTrickDeck = (scene: Scene) => {
     trickDeck.push(blankCard);
   }
 
+  // Shuffle and return the deck
   return shuffleDeck(trickDeck);
 };
 
-export default assembleTrickDeck;
+export const assembleEnemyDeck = (scene: Scene) => {
+  const sceneColorsArray = scene.color.split("");
+
+  const enemyDeck = blbEnemyCards.filter((card) => {
+    const cardColorsArray = card.cost.replace(/\d+/g, "").split("");
+    return cardColorsArray.every((color) => sceneColorsArray.includes(color));
+  });
+
+  return shuffleDeck(enemyDeck);
+};

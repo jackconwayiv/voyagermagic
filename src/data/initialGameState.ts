@@ -28,6 +28,13 @@ export const initialPlayerStats = [
   },
 ];
 
+export const initialDeckStats = {
+  library: [],
+  inPlay: [],
+  graveyard: [],
+  exile: [],
+};
+
 export const initialGameState = {
   isLoaded: true,
   playerCount: 2,
@@ -42,6 +49,6 @@ export const initialGameState = {
     reward: "",
   },
   nexii: [],
-  enemyDeckZones: { library: [], inPlay: [], graveyard: [], exile: [] },
-  enemyTrickZones: { library: [], inPlay: [], graveyard: [], exile: [] },
+  enemyDeckZones: initialDeckStats,
+  enemyTrickZones: initialDeckStats,
 };
