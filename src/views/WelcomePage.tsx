@@ -13,8 +13,8 @@ const WelcomePage = ({ gameState, setGameState }: WelcomePageProps) => {
   const handleClick = (num: number) => {
     const newGameState: GameState = { ...gameState, playerCount: num };
     setGameState(newGameState);
-    // navigate("/campaigns");
-    navigate("/scenes");
+    navigate("/campaigns");
+    // navigate("/scenes");
   };
 
   const renderButton = (num: number) => {
@@ -49,17 +49,18 @@ const WelcomePage = ({ gameState, setGameState }: WelcomePageProps) => {
       alignItems="center"
       height="100vh"
       width="100vw"
-      justifyContent="space-evenly"
+      justifyContent="baseline"
     >
-      <Heading>Welcome to Voyager Magic!</Heading>
+      <Heading mb={4}>Welcome to Voyager Magic!</Heading>
       <Flex
         alignItems="space-evenly"
         justifyContent="space-between"
         width="90vw"
+        my={4}
       >
         {mapButtons()}
       </Flex>
-      <Heading>How many players?</Heading>
+      <Heading my={4}>How many players?</Heading>
     </Flex>
   );
 };

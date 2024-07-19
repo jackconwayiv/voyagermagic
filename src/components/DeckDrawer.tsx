@@ -21,6 +21,7 @@ interface DeckDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   btnRef: React.RefObject<HTMLButtonElement>;
+  deckType: "enemyDeckZones" | "enemyTrickZones";
 }
 
 const DeckDrawer = ({
@@ -29,6 +30,7 @@ const DeckDrawer = ({
   isOpen,
   onClose,
   btnRef,
+  deckType,
 }: DeckDrawerProps) => {
   const toast = useToast();
   const [selectedZone, setSelectedZone] = useState<
@@ -36,7 +38,7 @@ const DeckDrawer = ({
   >("inPlay");
 
   const handleDrawCard = () => {
-    const result = drawCard(gameState.enemyTrickZones);
+    const result = drawCard(gameState[deckType]);
     if (result.status === "empty") {
       toast({
         title: "No cards left.",
@@ -48,7 +50,7 @@ const DeckDrawer = ({
     } else {
       setGameState((prevState) => ({
         ...prevState,
-        enemyTrickZones: result.deck,
+        [deckType]: result.deck,
       }));
     }
   };
@@ -70,19 +72,37 @@ const DeckDrawer = ({
         <DrawerBody>
           <Flex direction="column" height="425px">
             <Flex direction="row" alignItems="center" mb={4}>
-              <Button mr={5} onClick={handleDrawCard}>
-                Draw
+              <Button
+                colorScheme={
+                  deckType === "enemyTrickZones" ? "orange" : "purple"
+                }
+                mr={5}
+                onClick={handleDrawCard}
+              >
+                📚 Draw{" "}
+                {deckType === "enemyTrickZones" ? "Trick" : "Enemy Card"} (
+                {gameState[deckType].library.length})
               </Button>
-              <RadioGroup onChange={handleZoneChange} value={selectedZone}>
-                <Stack direction="row">
-                  <Radio value="inPlay">In Play</Radio>
-                  <Radio value="graveyard">Graveyard</Radio>
-                  <Radio value="exile">Exile</Radio>
+              <RadioGroup
+                onChange={handleZoneChange}
+                value={selectedZone}
+                width="80%"
+              >
+                <Stack direction="row" justifyContent="space-evenly">
+                  <Radio value="inPlay">
+                    💥 In Play ({gameState[deckType].inPlay.length})
+                  </Radio>
+                  <Radio value="graveyard">
+                    🪦 Graveyard ({gameState[deckType].graveyard.length})
+                  </Radio>
+                  <Radio value="exile">
+                    🌀 Exile ({gameState[deckType].exile.length})
+                  </Radio>
                 </Stack>
               </RadioGroup>
             </Flex>
             <Flex direction="row" alignItems="center" overflowX="auto">
-              {gameState.enemyTrickZones[selectedZone].map((card, i) => (
+              {gameState[deckType][selectedZone].map((card, i) => (
                 <GameCard
                   key={i}
                   card={card}

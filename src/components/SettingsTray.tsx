@@ -15,7 +15,7 @@ const SettingsTray = ({ gameState, setGameState }: SettingsTrayProps) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const pathSequenceArray = ["/", "/campaigns", "/scenes", "/play"];
+  const pathSequenceArray = ["/", "/campaigns", "/scenes", "/play", "/end"];
   const sequencePosition = pathSequenceArray.indexOf(location.pathname);
 
   const setPlayerCount = (numberOfPlayers: number) => {
@@ -44,13 +44,14 @@ const SettingsTray = ({ gameState, setGameState }: SettingsTrayProps) => {
     <Flex
       direction="row"
       width="100%"
-      p={3}
+      px={3}
+      py={1}
       alignItems="center"
       justifyContent="space-between"
     >
       <Flex>
         <Button
-          // disabled={location.pathname === "/"}
+          isDisabled={location.pathname === "/"}
           onClick={() => navigate(pathSequenceArray[sequencePosition - 1])}
         >
           BACK

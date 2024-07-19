@@ -7,7 +7,7 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DeckDrawer from "../components/DeckDrawer";
 import NexusCard from "../components/NexusCard";
@@ -24,24 +24,31 @@ const PlayView = ({ gameState, setGameState }: PlayViewProps) => {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef<HTMLButtonElement>(null);
+  const [deckType, setDeckType] = useState<
+    "enemyDeckZones" | "enemyTrickZones"
+  >("enemyTrickZones");
+
+  const handleDrawerOpen = (deck: "enemyDeckZones" | "enemyTrickZones") => {
+    setDeckType(deck);
+    onOpen(); // Call onOpen function to open the drawer
+  };
+
+  useEffect(() => {
+    if (gameState.campaign === "" || gameState.sceneDetails.scene === 0)
+      navigate("/");
+  }, [gameState]);
 
   return (
     <Flex direction="column" width="100%" height="100vh" alignItems="center">
       <Flex direction="row" width="96%" justifyContent="center">
-        <Heading>
+        <Heading mb={2}>
           {campaignDictionary[gameState.campaign]}, Scene{" "}
           {gameState.sceneDetails.scene.toString()}:{" "}
           {gameState.sceneDetails.name}
         </Heading>
       </Flex>
       <Flex direction="row" width="100%">
-        <Flex
-          width="100%" //70%
-          direction="row"
-          justifyContent="center"
-          p={2}
-          m={3}
-        >
+        <Flex width="100%" direction="row" justifyContent="center" mb={2}>
           <Wrap alignItems="center" justify="center" spacing="20px">
             {gameState.nexii.map((nexus, i) => (
               <WrapItem
@@ -58,30 +65,11 @@ const PlayView = ({ gameState, setGameState }: PlayViewProps) => {
             ))}
           </Wrap>
         </Flex>
-        {/* <Flex
-          alignItems="center"
-          justifyContent="center"
-          direction="column"
-          width="30%"
-          height="100%"
-          border="1px black solid"
-          p={5}
-          m={5}
-        >
-          {cards.map((card) => (
-            <GameCard
-              // this needs to be refactored to use gameState
-              playerCount={gameState.playerCount}
-              card={card}
-              key={card.name}
-            />
-          ))}
-        </Flex> */}
       </Flex>
-      <Flex direction="row" width="50%" justifyContent="space-evenly">
+      <Flex direction="row" width="50%" justifyContent="space-evenly" mb={2}>
         <Button
           ref={btnRef}
-          onClick={onOpen}
+          onClick={() => handleDrawerOpen("enemyTrickZones")}
           width="50px"
           height="50px"
           colorScheme="orange"
@@ -102,7 +90,13 @@ const PlayView = ({ gameState, setGameState }: PlayViewProps) => {
         ) : (
           <Flex width="150px" />
         )}
-        <Button width="50px" height="50px" colorScheme="purple">
+        <Button
+          ref={btnRef}
+          onClick={() => handleDrawerOpen("enemyDeckZones")}
+          width="50px"
+          height="50px"
+          colorScheme="purple"
+        >
           <Text fontSize="22px">📖</Text>
         </Button>
       </Flex>
@@ -112,6 +106,7 @@ const PlayView = ({ gameState, setGameState }: PlayViewProps) => {
         isOpen={isOpen}
         onClose={onClose}
         btnRef={btnRef}
+        deckType={deckType}
       />
       <PlayersTray gameState={gameState} setGameState={setGameState} />
     </Flex>

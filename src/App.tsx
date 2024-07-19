@@ -1,6 +1,7 @@
 import { Flex, Spacer } from "@chakra-ui/react";
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SettingsTray from "./components/SettingsTray";
 import { initialGameState } from "./data/initialGameState";
 import { GameState } from "./data/types";
 import "./index.css";
@@ -8,7 +9,6 @@ import CampaignsView from "./views/CampaignsView";
 import EndView from "./views/EndView";
 import PlayView from "./views/PlayView";
 import ScenesView from "./views/ScenesView";
-import SettingsTray from "./components/SettingsTray";
 import WelcomePage from "./views/WelcomePage";
 
 function App() {
@@ -23,18 +23,18 @@ function App() {
             <Routes>
               <Route
                 path="/"
-                // element={
-                //   <WelcomePage
-                //     gameState={gameState}
-                //     setGameState={setGameState}
-                //   />
-                // }
                 element={
-                  <ScenesView
+                  <WelcomePage
                     gameState={gameState}
                     setGameState={setGameState}
                   />
                 }
+                // element={
+                //   <ScenesView
+                //     gameState={gameState}
+                //     setGameState={setGameState}
+                //   />
+                // }
               />
               <Route
                 path="/play"

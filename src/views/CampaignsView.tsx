@@ -30,10 +30,10 @@ const CampaignsView = ({ gameState, setGameState }: CampaignsViewProps) => {
       width="100%"
       height="100vh"
       alignItems="center"
-      justifyContent="space-evenly"
+      justifyContent="baseline"
     >
-      <Heading>Choose a Campaign:</Heading>
-      <Wrap justifyContent="space-between">
+      <Heading mb={4}>Choose a Campaign:</Heading>
+      <Wrap justifyContent="space-between" my={4}>
         {/* refactor this to map over array of campaigns */}
         <Button
           bgColor="green.200"

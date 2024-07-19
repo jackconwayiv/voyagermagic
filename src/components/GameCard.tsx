@@ -101,40 +101,42 @@ const GameCard = ({
           </Text>
         </Flex>
         <Flex direction="row" mb={1} justifyContent="space-evenly">
+          {fromZone !== "inPlay" && (
+            <Button
+              bgColor={`${colors.d}.100`}
+              size="sm"
+              onClick={() => handleMoveCard("inPlay")}
+            >
+              💥
+            </Button>
+          )}
           {fromZone !== "graveyard" && (
             <Button
-              colorScheme={colors.d}
+              bgColor={`${colors.d}.100`}
               size="sm"
               onClick={() => handleMoveCard("graveyard")}
             >
-              GR
+              🪦
             </Button>
           )}
           {fromZone !== "exile" && (
             <Button
-              colorScheme={colors.d}
+              bgColor={`${colors.d}.100`}
               size="sm"
               onClick={() => handleMoveCard("exile")}
             >
-              EX
+              🌀
             </Button>
           )}
-          {fromZone !== "inPlay" && (
+          {fromZone !== "library" && (
             <Button
-              colorScheme={colors.d}
+              bgColor={`${colors.d}.100`}
               size="sm"
-              onClick={() => handleMoveCard("inPlay")}
+              onClick={() => handleMoveCard("library")}
             >
-              PL
+              📚
             </Button>
           )}
-          <Button
-            colorScheme={colors.d}
-            size="sm"
-            onClick={() => handleMoveCard("library")}
-          >
-            LI
-          </Button>
         </Flex>
       </Flex>
     </Flex>

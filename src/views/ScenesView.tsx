@@ -12,8 +12,8 @@ import { nexiiData } from "../data/blb/blbNexiiData";
 import { blbScenes } from "../data/blb/blbSceneData";
 import { campaignDictionary } from "../data/campaignDictionary";
 import { GameState, Scene } from "../data/types";
-import determineCardColors from "../functions/determineCardColors";
 import assembleTrickDeck from "../functions/assembleTrickDeck";
+import determineCardColors from "../functions/determineCardColors";
 
 interface ScenesViewProps {
   gameState: GameState;
@@ -32,7 +32,9 @@ const ScenesView = ({ gameState, setGameState }: ScenesViewProps) => {
     newGameState.sceneDetails = blbScenes.filter(
       (sceneDetails) => sceneDetails.scene === scene
     )[0];
-    newGameState.enemyTrickZones.library = assembleTrickDeck(newGameState.sceneDetails)
+    newGameState.enemyTrickZones.library = assembleTrickDeck(
+      newGameState.sceneDetails
+    );
     setGameState(newGameState);
   };
 
@@ -103,10 +105,10 @@ const ScenesView = ({ gameState, setGameState }: ScenesViewProps) => {
       direction="column"
       width="100%"
       height="100vh"
-      alignItems="baseline"
+      alignItems="center"
       justifyContent="baseline"
     >
-      <Heading m={2}>
+      <Heading textAlign="center" mb={4}>
         Choose a {campaignDictionary[gameState.campaign]} Scenario:
       </Heading>
       <Wrap
@@ -114,7 +116,7 @@ const ScenesView = ({ gameState, setGameState }: ScenesViewProps) => {
         alignItems="center"
         justify="center"
         width="100%"
-        m={2}
+        my={4}
       >
         {blbScenes.map((scene) => renderButton(scene))}
       </Wrap>
