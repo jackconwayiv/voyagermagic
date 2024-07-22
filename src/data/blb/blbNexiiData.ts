@@ -1,6 +1,38 @@
 //refactor to use class factory to spit out repeat props such as isDead, counters, etc.
 
 export const nexiiData = [
+  {
+    campaign: "BLB",
+    scene: 9,
+    id: "a",
+    name: "Hungry Tongue",
+    color: "G",
+    life: 20,
+    isDead: false,
+    isEnraged: false,
+    isMonarch: false,
+    counters: [],
+    aliveRules: [
+      "⚔️ Whenever a creature strikes me, if it's larger than any creature I've captured, return each other card I've captured to its owner's hand and I capture that creature.",
+    ],
+    deadRules: ["⚔️ Whenever a foe becomes blocked, if it hasn't captured a creature, prevent all combat damage it would deal or be dealt. It captures each creature blocking it."],
+  },
+  {
+    campaign: "BLB",
+    scene: 9,
+    id: "b",
+    name: "Warty Hide",
+    color: "U",
+    life: 20,
+    isDead: false,
+    isEnraged: false,
+    isMonarch: false,
+    counters: [],
+    aliveRules: [
+      "♾️ All foes have ward 2.",
+    ],
+    deadRules: ["♾️ All foes have hexproof."],
+  },
   //refactor scene 8 to scale better with different player counts.
   //concept of 'doom die' - roll once, and each nexus triggers off different values?
   {

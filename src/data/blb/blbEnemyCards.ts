@@ -1,12 +1,50 @@
 import { Card } from "../types";
 
 const blbEnemyCards: Card[] = [
+  //each player discards down the the lowest hand size among players. each player gets enough Woe to equal the player with the most Woe counters.
+  //for each permanent type, the players choose up to one they control and sacrifice the rest.
+  //players can't gain life
+
   {
-    name: "Brazen Bladeblinder",
+    name: "The Reckoning",
     cost: "2WW",
-    type: "Creature - Weasel",
+    type: "Legendary Sorcery - Event",
     generateText: () =>
-      `Encounter a 2/2 white and black Weasel creature token with lifelink, then tap each creature you control with 3 or greater power.`,
+      `After all other enemy cards have resolved, destroy all creatures and planeswalkers in play. Get 1 Woe for each enemy permanent that leaves your battleground this way.`,
+  },
+  {
+    name: "Foes from the Meadow",
+    cost: "5WW",
+    type: "Sorcery",
+    generateText: () =>
+      `Encounter each: a 2/2 white- blue flying Fish; a 2/2 white- black lifelink Weasel; a 2/2 red- white first strike Vole; and a 2/3 green- white protector Armadillo.`,
+  },
+  {
+    name: "Resurgence",
+    cost: "1W",
+    type: "Sorcery",
+    generateText: () => `Each Nexus gains 10 life.`,
+  },
+  {
+    name: "Awestrike",
+    cost: "3W",
+    type: "Sorcery",
+    generateText: () =>
+      `Stun each tapped nonland permanent you control, then tap each untapped nonland permanent you control.`,
+  },
+  {
+    name: "Shellshock",
+    cost: "2WW",
+    type: "Sorcery",
+    generateText: () =>
+      `Mute each creature you control. If you have no creatures, you get 3 Woe counters. If you're opulent, instead mute each nonland permanent you control.`,
+  },
+  {
+    name: "In This Together",
+    cost: "4WW",
+    type: "Sorcery",
+    generateText: () =>
+      `Each Nexus's life total becomes the greatest life total among Nexii. Each player's life total becomes the lowest life total among players.`,
   },
   {
     name: "Morale Boost",
@@ -21,6 +59,76 @@ const blbEnemyCards: Card[] = [
     type: "Enchantment",
     generateText: () =>
       `Encounter a "Vole Hole" enchantment token with: "On enemy upkeep, encounter a 2/2 red and white Vole creature token with first strike."`,
+  },
+  {
+    name: "Brazen Bladeblinder",
+    cost: "2WW",
+    type: "Creature - Weasel",
+    generateText: () =>
+      `Encounter a 2/2 white and black Weasel creature token with lifelink. Then tap each creature you control with 3 or greater power.`,
+  },
+  {
+    name: "Weasel Walloper",
+    cost: "1WW",
+    type: "Creature - Weasel",
+    generateText: () =>
+      `Encounter a 2/2 white and black Weasel creature token with lifelink. Then sacrifice an artifact or enchantment you control with the greatest mana value and rarity.`,
+  },
+  {
+    name: "Supply Line Stalwart",
+    cost: "3W",
+    type: "Creature - Armadillo",
+    generateText: () =>
+      `Encounter a 2/3 green and white Armadillo creature token with protector. Then each Nexus gains life equal to the greatest toughness among foes you're facing.`,
+  },
+  {
+    name: "Foreverdillo",
+    cost: "3WW",
+    type: "Creature - Armadillo",
+    generateText: () =>
+      `Encounter a 2/3 green and white Armadillo creature token with protector. Put X shield counters on it, where X is twice the number of Nexii you're facing.`,
+  },
+  {
+    name: "Troutswallow",
+    cost: "1WW",
+    type: "Creature - Fish",
+    generateText: () =>
+      `Encounter a 2/2 white and blue Fish creature token with flying. It captures target creature you control with greatest mana value and rarity.`,
+  },
+  {
+    name: "Blinding Bass",
+    cost: "2W",
+    type: "Creature - Fish",
+    generateText: () =>
+      `Encounter a 2/2 white and blue Fish creature token with flying. Then tap each creature you control with flying or reach.`,
+  },
+  {
+    name: "Fuzzy Muzzler",
+    cost: "2W",
+    type: "Creature - Vole",
+    generateText: () =>
+      `Encounter a 2/2 red and white Vole creature token with first strike. Then mute target creature you control with the most lines of rules text.`,
+  },
+  {
+    name: "Squeaky Squadron",
+    cost: "3WW",
+    type: "Creature - Vole",
+    generateText: () =>
+      `For each Nexus you're facing, encounter a 2/2 red and white Vole creature token with first strike.`,
+  },
+  {
+    name: "Mendhoof the Stag",
+    cost: "4WW",
+    type: "Creature - Elemental Elk",
+    generateText: () =>
+      `Encounter a 3/3 white Elk creature token named "Mendhoof" with lifelink and "When I die, each player gets X Woe counters, where X is the amount of life greater than 10 they have."`,
+  },
+  {
+    name: "Heartsong the Moth",
+    cost: "4WW",
+    type: "Creature - Elemental Moth",
+    generateText: () =>
+      `Encounter a 2/4 white Moth creature token named "Heartsong" with flying and lifelink and "I get +1/+1 for each Nexus and player with life total greater than their starting total."`,
   },
 
   // ===========
@@ -145,11 +253,11 @@ const blbEnemyCards: Card[] = [
       `Encounter a 3/3 blue Crab creature token named "Clawtrap" with hexproof and ensnare and "I get +1/+1 for each Woe counter you have."`,
   },
   {
-    name: "Aera the Albatross",
+    name: "Skybeak the Albatross",
     cost: "4UU",
     type: "Creature - Elemental Bird",
     generateText: () =>
-      `Encounter a 1/1 blue Bird creature token named "Aera" with flying and "Whenever a creature blocks me, return it to its owner's hand." Then it grows once for each Nexus you're facing.`,
+      `Encounter a 1/1 blue Bird creature token named "Skybeak" with flying and "Whenever a creature blocks me, return it to its owner's hand." Then it grows once for each Nexus you're facing.`,
   },
   {
     name: "Foes from the Marsh",
@@ -390,18 +498,18 @@ const blbEnemyCards: Card[] = [
       `Encounter a 2/2 red and white Vole creature token with first strike. Your foes gain wither until end of turn.`,
   },
   {
-    name: "Hensy the Firehawk",
+    name: "Sunplume the Firehawk",
     cost: "4RR",
     type: "Creature - Elemental Bird",
     generateText: () =>
-      `Encounter a 4/4 red Bird creature token named "Hensy" with flying and "Whenever you cast a noncreature spell, I deal damage to you equal to that spell's mana value."`,
+      `Encounter a 4/4 red Bird creature token named "Sunplume" with flying and "Whenever you cast a noncreature spell, I deal damage to you equal to that spell's mana value."`,
   },
   {
-    name: "Ambrose the Bloodboar",
+    name: "Thundertusk the Boar",
     cost: "4RR",
     type: "Creature - Elemental Boar",
     generateText: () =>
-      `Encounter a 4/4 red Boar creature token named "Ambrose" with menace and trample and "Whenever I strike you, I grow."`,
+      `Encounter a 4/4 red Boar creature token named "Thundertusk" with menace and trample and "Whenever I strike you, I grow."`,
   },
   {
     name: "Foes from the Thicket",
@@ -570,6 +678,34 @@ const blbEnemyCards: Card[] = [
     type: "Creature - Fox",
     generateText: () =>
       `Encounter two 2/2 blue and red Fox creature tokens with provoke. Then get a Woe counter for each enemy Fox you're facing.`,
+  },
+  {
+    name: "Vitality Filchers",
+    cost: "1WB",
+    type: "Creature - Weasel",
+    generateText: () =>
+      `Encounter two 2/2 white and black Weasel creature tokens with lifelink. Then each Nexus gains life equal to the number of foes you're facing, and you lose that much life.`,
+  },
+  {
+    name: "Never to Be Seen Again",
+    cost: "WB",
+    type: "Sorcery",
+    generateText: () =>
+      `Exile target nonland permanent you control with the greatest rarity and mana value and lines of rules text.`,
+  },
+  {
+    name: "Beaver Buddies",
+    cost: "2GU",
+    type: "Creature - Weasel",
+    generateText: () =>
+      `Encounter two 2/3 green and blue Beaver creature tokens with hexproof. Then each Beaver you're facing captures an artifact, enchantment, or nonbasic land you control.`,
+  },
+  {
+    name: "Rough Weather Ahead",
+    cost: "3GU",
+    type: "Sorcery",
+    generateText: () =>
+      `You get 10 Woe counters.`,
   },
 ];
 export default blbEnemyCards;

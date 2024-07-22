@@ -66,4 +66,13 @@ export const blbScenes = [
     reward:
       "The party gains `Gift of the Raccoons.` Deck grows from 42 to 43 cards: add 1 rare.",
   },
+  {
+    scene: 9,
+    name: "The Terrible Toad",
+    color: "GU",
+    pre: "Hugs tells you that the a young frogfolk seer named Helga has been envisioning terrible calamity beast visitations in her auguries since just before the attacks began. She fears that a great catastrophe may soon befall Bloomburrow, and yearns to warn everyone before it's too late.",
+    post: "With the Toad driven back, the lizards give you their wary gratitude. Hugs, Gev, Helga, and the others in the company of heroes led by a brave mousefolk named Mabel, invite you to join their party. 'We are tracking the trail of some ratfolk we believe are up to no good,' says Mabel, 'and we could use your help!'",
+    reward:
+      "The party gains `Gift of the Lizards.` Deck grows from 43 to 44 cards: add 1 land.",
+  },
 ];

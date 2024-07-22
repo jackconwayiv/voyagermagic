@@ -2,7 +2,6 @@ import {
   Button,
   Flex,
   Heading,
-  Input,
   Modal,
   ModalBody,
   ModalContent,
@@ -42,18 +41,18 @@ const PlayerModal = ({
     setGameState(newGameState);
   };
 
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newName = e.target.value.slice(0, 10); // Cap the name at 10 characters
-    const newPlayer = { ...gameState.playerStats[index], name: newName };
-    const newGameState = {
-      ...gameState,
-      playerStats: gameState.playerStats.map((player, i) =>
-        i === index ? newPlayer : player
-      ),
-    };
+  // const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const newName = e.target.value.slice(0, 10); // Cap the name at 10 characters
+  //   const newPlayer = { ...gameState.playerStats[index], name: newName };
+  //   const newGameState = {
+  //     ...gameState,
+  //     playerStats: gameState.playerStats.map((player, i) =>
+  //       i === index ? newPlayer : player
+  //     ),
+  //   };
 
-    setGameState(newGameState);
-  };
+  //   setGameState(newGameState);
+  // };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -69,10 +68,10 @@ const PlayerModal = ({
             alignItems="center"
             justifyContent="center"
           >
-            <Input
+            {/* <Input
               value={gameState.playerStats[index].name}
               onChange={handleNameChange}
-            />
+            /> */}
             <Flex
               direction="row"
               p={3}

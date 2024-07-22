@@ -67,7 +67,7 @@ const blbTricks: Card[] = [
     cost: "2U",
     type: "Instant - Trick",
     generateText: () =>
-      `Spell target creature. (Exile it. Its owner may cast it from exile by paying an additional (2) mana.)`,
+      `Spellbind target creature. (Exile it. Its owner may cast it from exile by paying an additional (2) mana.)`,
   },
   {
     name: "Battle Scars",
@@ -84,18 +84,18 @@ const blbTricks: Card[] = [
       `Sacrifice target creature unless you sacrifice another creature with greater power and toughness.`,
   },
   {
-    name: "Unwelcome Return",
+    name: "Push Through Fear",
     cost: "2BB",
     type: "Instant - Trick",
     generateText: () =>
-      `Return an enemy creature card with highest mana value from graveyard to play. It blocks target creature if able. (If you can't do this, you get 3 Woe counters.)`,
+      `Discard a card at random. If you can't, you get 3 Woe counters.`,
   },
   {
     name: "Snake in the Marsh",
     cost: "B",
     type: "Instant - Trick",
     generateText: () =>
-      `Encounter a 1/1 black Snake creature token with deathtouch. It blocks (or fights) target creature if able. After combat, tap it.`,
+      `Encounter a 1/1 black and green Snake creature token with deathtouch. It blocks target creature if able. After combat, tap it.`,
   },
   {
     name: "Wrack with Regret",
@@ -109,21 +109,21 @@ const blbTricks: Card[] = [
     cost: "2R",
     type: "Instant - Trick",
     generateText: () =>
-      `Deal 5 damage to target creature unless you sacrifice an artifact of greater mana value or rarity.`,
+      `Deal X damage to target creature unless you sacrifice an artifact of greater mana value or rarity, where X is twice the number of Nexii you're facing.`,
   },
   {
     name: "Hazardous Terrain",
     cost: "2RR",
     type: "Instant - Trick",
     generateText: () =>
-      `Deal X damage to target player (you), where X is double the number of your attacking creatures.`,
+      `Deal X damage to target player (you), where X is the number of your attacking creatures.`,
   },
   {
-    name: "Fire Ants",
-    cost: "1R",
+    name: "Vole Vanguard",
+    cost: "3R",
     type: "Instant - Trick",
     generateText: () =>
-      `Encounter two 1/1 red Insect creature tokens with wither. They block target creature if able. After combat, tap them.`,
+      `Encounter two 2/2 red and white Vole creature tokens with first strike. They block target creature if able. After combat, tap them.`,
   },
   {
     name: "Enflame",
@@ -144,14 +144,14 @@ const blbTricks: Card[] = [
     cost: "G",
     type: "Instant - Trick",
     generateText: () =>
-      `Prevent all combat damage target creature would deal this turn.`,
+      `Prevent all combat damage creatures you control would deal this turn.`,
   },
   {
-    name: "Incensed Rabbitfolk",
+    name: "Rouse the Guard",
     cost: "1GG",
     type: "Instant - Trick",
     generateText: () =>
-      `The next time target creature deals combat damage this turn, encounter that many tapped 1/1 white Rabbit creature tokens.`,
+      `The next time target creature deals combat damage this turn, encounter a tapped 2/3 green and white Armadillo creature token with protector and put that many +1/+1 counters on it.`,
   },
   {
     name: "Cowed by Might",
