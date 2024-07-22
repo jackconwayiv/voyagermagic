@@ -1,6 +1,40 @@
 //refactor to use class factory to spit out repeat props such as isDead, counters, etc.
 
 export const nexiiData = [
+  //refactor scene 8 to scale better with different player counts.
+  //concept of 'doom die' - roll once, and each nexus triggers off different values?
+  {
+    campaign: "BLB",
+    scene: 8,
+    id: "a",
+    name: "Moonbeam Wings",
+    color: "W",
+    life: 20,
+    isDead: false,
+    isEnraged: false,
+    isMonarch: false,
+    counters: [],
+    aliveRules: [
+      "⏳ On upkeep, a player with the fewest flying foes puts a flying counter on a foe they're facing.",
+    ],
+    deadRules: ["♾️ All foes have flying."],
+  },
+  {
+    campaign: "BLB",
+    scene: 8,
+    id: "b",
+    name: "Stardust Screams",
+    color: "B",
+    life: 20,
+    isDead: false,
+    isEnraged: false,
+    isMonarch: false,
+    counters: [],
+    aliveRules: [
+      "⏳ On upkeep, a player with the most cards in hand discards a card at random.",
+    ],
+    deadRules: ["⏳ On upkeep, each player discards a card."],
+  },
   {
     campaign: "BLB",
     scene: 7,
@@ -15,7 +49,9 @@ export const nexiiData = [
     aliveRules: [
       "⚔️ At the end of combat, roll a d6 for each creature that struck me. On a 1 or 2, return that creature to its owner's hand.",
     ],
-    deadRules: [""],
+    deadRules: [
+      "⚔️ Whenever a creature strikes a Nexus, return that creature to its owner's hand.",
+    ],
   },
   {
     campaign: "BLB",
@@ -31,7 +67,9 @@ export const nexiiData = [
     aliveRules: [
       "⏳ On upkeep, each player rolls a d6. On 1 or 2, that player must blight an (unblighted nonbasic) land they control.",
     ],
-    deadRules: [""],
+    deadRules: [
+      "💥 Whenever a blighted land becomes tapped, add a blight to it.",
+    ],
   },
   {
     campaign: "BLB",
@@ -63,7 +101,10 @@ export const nexiiData = [
     aliveRules: [
       "⏳ On upkeep, each player rolls a d6. On 1 or 2, that player puts a shield counter on a foe they're facing (without a shield counter).",
     ],
-    deadRules: ["⚔️ Prevent all combat damage that would be dealt to foes with shield counters.", "⚔️ Foes with shield counters have double strike."],
+    deadRules: [
+      "⚔️ Prevent all combat damage that would be dealt to foes with shield counters.",
+      "⚔️ Foes with shield counters have double strike.",
+    ],
   },
   {
     campaign: "BLB",

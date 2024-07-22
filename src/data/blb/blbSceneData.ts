@@ -57,4 +57,13 @@ export const blbScenes = [
     reward:
       "The party gains `Gift of the Rabbits.` Unlock rares. Deck grows from 41 to 42 cards: add 1 rare.",
   },
+  {
+    scene: 8,
+    name: "The Baleful Direbat",
+    color: "WB",
+    pre: "One night on your way to the home of the raccoons, your campsite is attacked by a massive insensate elemental bat beast, spewing moonbeams and stardust. Something has riled it up into a frenzy!",
+    post: "Hugs the badger stands among the raccoon refugees who were forced to flee their homes. Hugs is as happy to see you as the raccoonfolk, but he urges haste. His best friend Gev the lizard, along with the rest of the adventuring party, have already headed to Gev's homeland, tracking suspicious rat-prints in the mud...",
+    reward:
+      "The party gains `Gift of the Raccoons.` Deck grows from 42 to 43 cards: add 1 rare.",
+  },
 ];
