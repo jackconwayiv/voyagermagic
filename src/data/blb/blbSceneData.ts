@@ -68,11 +68,65 @@ export const blbScenes = [
   },
   {
     scene: 9,
-    name: "The Terrible Toad",
+    name: "The Hungering Toad",
     color: "GU",
     pre: "Hugs tells you that the a young frogfolk seer named Helga has been envisioning terrible calamity beast visitations in her auguries since just before the attacks began. She fears that a great catastrophe may soon befall Bloomburrow, and yearns to warn everyone before it's too late.",
     post: "With the Toad driven back, the lizards give you their wary gratitude. Hugs, Gev, Helga, and the others in the company of heroes led by a brave mousefolk named Mabel, invite you to join their party. 'We are tracking the trail of some ratfolk we believe are up to no good,' says Mabel, 'and we could use your help!'",
     reward:
       "The party gains `Gift of the Lizards.` Deck grows from 43 to 44 cards: add 1 land.",
+  },
+  {
+    scene: 10,
+    name: "The Lightning Cat",
+    color: "RW",
+    pre: "Though Mabel doesn't trust the rats, they're no less succeptible to calamity beast attack. A ferocious feline, a jagged jaguar, stalking and darting and all acrackle with elemental energy, has declared dominion over the marshlands of the rats. Drive it away!",
+    post: "The Ratfolk reveal that they are students of the history of Bloomburrow and keepers of the Archives. In their trance-like visions, they have seen glimpses of a great atrocity committed by a citizen of Bloomburrow against Maha, Its Feathers Night. Mabel regrets leaving her heirloom sword at home...",
+    reward:
+      "The party gains `Gift of the Rats.` Deck grows from 44 to 45 cards: add 1 rare.",
+  },
+  {
+    scene: 11,
+    name: "The Doomshell Turtle",
+    color: "UB",
+    pre: "Between your party and the presumed comforts of Mabel's home and family (and her heirloom blade Cragflame) lies another beast, a turtle wrapped in dark fog and crowned in overcast clouds. Cold air encircles the beast in a cyclone. You steel yourselves for a fight.",
+    post: "Sword in hand, Mabel looks at the party. `Now I'm ready to face whatever comes,` she says. Helga, the young frog augur, gulps apprehensively, sheepishly looking at each party member to determine just what degree of a mess she landed them all in.",
+    reward:
+      "The party gains `Gift of the Mice.` Deck grows from 45 to 46 cards: add 1 rare.",
+  },
+  {
+    scene: 12,
+    name: "The Filching Raccoon",
+    color: "RG",
+    pre: "The party decides to seek the counsel of the batfolk, known readers of the stars, to find out more about this predicament. You set out under cover of night to the treetop home of the bats, but you're not the only ones hoping to find some bats in the boughs...",
+    post: "The leader of the batfolk Zoraline praises your efforts so far between yawns. `I have seen ... a wicked one, acting in malice ... among the squirrelfolk ...` She and some other batfolk offer to fly with you to the squirrel nests and lend their aid.",
+    reward:
+      "The party gains `Gift of the Bats.` Deck grows from 46 to 47 cards: add 1 land.",
+  },
+  {
+    scene: 13,
+    name: "The Haughty Hawk",
+    color: "WU",
+    pre: "As the party, accompanied by the batfolk, fly through the night sky, a terrible `CAW!` pierces the air. A dazzling hawk made of crystal ice soars by, leaving a trail of snowflakes in its wake. Mabel draws her sword and charges as her bat swoops toward the hawk.",
+    post: "On the forest floor below the fray reside the squirrels, who thank you for dealing with the hawk. Mabel's blunt accusations meet with displeasure, but her rabbit companion Finneas takes a more diplomatic approach and learns of the Infamous Cruelclaw...",
+    reward:
+      "The party gains `Gift of the Squirrels.` Deck grows from 47 to 48 cards: add 1 rare.",
+  },
+  {
+    scene: 14,
+    name: "The Magmatic Gator",
+    color: "BR",
+    pre: "The Infamous Cruelclaw, a rascally weaselfolk rogue, is the one who has stolen the egg from the Night-Bird Maha. He was last seen hauling a heavy sack toward the pondside city of the frogs, Fountainport. But the wetlands between here and there are currently ravaged by a gator of pure lava...",
+    post: "The frogfolk villagers who live on the outskirts of the city offer you their thanks. They confirm that the Infamous Cruelclaw has been spotted heading into Fountainport, and the scuttlebutt is that he even had an audience with King Glarb himself. Helga loses all her color at mention of her king...",
+    reward:
+      "The party gains `Gift of the Frogs.` Deck grows from 48 to 49 cards: add 1 rare.",
+  },
+  {
+    scene: 15,
+    name: "The Towering Wolf",
+    color: "GW",
+    pre: "Investigations in Fountainport reveal that the Infamous Cruelclaw has skipped town. Whatever business he had with the king, no one knows. But he seems to have headed up the river toward the home of the otters, perhaps to slip through during the chaos of a calamity beast attack...",
+    post: "A strange looking otter who calls himself Ral wields lightning and helps you apprehend the Infamous Cruelclaw (hereafter simply Cruelclaw). After some convincing, the weasel scoundrel reveals that it was indeed King Glarb who hired him to steal the Night-Bird's egg, no idea what for. From bad to worse.",
+    reward:
+      "The party gains `Gift of the Otters.` Deck grows from 49 to 50 cards: add 1 rare.",
   },
 ];

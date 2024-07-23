@@ -50,8 +50,10 @@ const blbEnemyCards: Card[] = [
     name: "Morale Boost",
     cost: "2WW",
     type: "Enchantment",
-    generateText: () =>
-      `Encounter a "Morale Boost" enchantment token with: "Whenever a creature strikes you, it grows." Then you get 3 Woe counters.`,
+    generateText: (gameState) =>
+      `Encounter a "Morale Boost" enchantment token with: "Whenever a creature strikes you, it grows." Then you get ${
+        gameState.nexii.length
+      } Woe counter${gameState.nexii.length === 1 ? `` : `s`}.`,
   },
   {
     name: "Vole Hole",
@@ -235,15 +237,19 @@ const blbEnemyCards: Card[] = [
     name: "Woestruck",
     cost: "1UU",
     type: "Enchantment",
-    generateText: () =>
-      `Encounter a "Woestruck" enchantment token with: "Whenever a creature strikes you, mill that many cards." Then you get 3 Woe counters.`,
+    generateText: (gameState) =>
+      `Encounter a "Woestruck" enchantment token with: "Whenever a creature strikes you, mill that many cards."  Then you get ${
+        gameState.nexii.length
+      } Woe counter${gameState.nexii.length === 1 ? `` : `s`}.`,
   },
   {
     name: "Frozen Footing",
     cost: "1U",
     type: "Enchantment",
-    generateText: () =>
-      `Encounter a "Frozen Footing" enchantment token with: "On enemy upkeep, tap an untapped creature you control." Then you get 3 Woe counters.`,
+    generateText: (gameState) =>
+      `Encounter a "Frozen Footing" enchantment token with: "On enemy upkeep, tap an untapped creature you control."  Then you get ${
+        gameState.nexii.length
+      } Woe counter${gameState.nexii.length === 1 ? `` : `s`}.`,
   },
   {
     name: "Clawtrap the Crab",
@@ -305,15 +311,19 @@ const blbEnemyCards: Card[] = [
     name: "War Wounds",
     cost: "2BB",
     type: "Enchantment",
-    generateText: () =>
-      `Encounter a "War Wounds" enchantment token with: "Whenever a creature you control attacks or blocks, you lose 1 life." Then you get 3 Woe counters.`,
+    generateText: (gameState) =>
+      `Encounter a "War Wounds" enchantment token with: "Whenever a creature you control attacks or blocks, you lose 1 life."  Then you get ${
+        gameState.nexii.length
+      } Woe counter${gameState.nexii.length === 1 ? `` : `s`}.`,
   },
   {
     name: "Death's Burden",
     cost: "2B",
     type: "Enchantment",
-    generateText: () =>
-      `Encounter a "Death's Burden" enchantment token with: "Whenever any creature in your battleground dies, you mill a card and lose 1 life." Then you get 3 Woe counters.`,
+    generateText: (gameState) =>
+      `Encounter a "Death's Burden" enchantment token with: "Whenever any creature in your battleground dies, you mill a card and lose 1 life."  Then you get ${
+        gameState.nexii.length
+      } Woe counter${gameState.nexii.length === 1 ? `` : `s`}.`,
   },
   {
     name: "Beguiling Gastropod",
@@ -417,8 +427,10 @@ const blbEnemyCards: Card[] = [
     name: "Feral Ferocity",
     cost: "2RR",
     type: "Enchantment",
-    generateText: () =>
-      `Encounter a "Feral Ferocity" enchantment token with: "Your foes have double-strike." Then you get 3 Woe counters.`,
+    generateText: (gameState) =>
+      `Encounter a "Feral Ferocity" enchantment token with: "Your foes have double-strike."  Then you get ${
+        gameState.nexii.length
+      } Woe counter${gameState.nexii.length === 1 ? `` : `s`}.`,
   },
   {
     name: "Wages of War",
@@ -431,15 +443,19 @@ const blbEnemyCards: Card[] = [
     name: "High Ground",
     cost: "2R",
     type: "Enchantment",
-    generateText: () =>
-      `Encounter a "High Ground" enchantment token with: "Whenever you encounter a foe with power 2 or less, it deals 1 damage to you." Then you get 3 Woe counters.`,
+    generateText: (gameState) =>
+      `Encounter a "High Ground" enchantment token with: "Whenever you encounter a foe with power 2 or less, it deals 1 damage to you."  Then you get ${
+        gameState.nexii.length
+      } Woe counter${gameState.nexii.length === 1 ? `` : `s`}.`,
   },
   {
     name: "Zealous Hearts",
     cost: "2RR",
     type: "Enchantment",
-    generateText: () =>
-      `Encounter a "Zealous Hearts" enchantment token with: "Your creatures attack each combat if able." Then you get 3 Woe counters.`,
+    generateText: (gameState) =>
+      `Encounter a "Zealous Hearts" enchantment token with: "Your creatures attack each combat if able."  Then you get ${
+        gameState.nexii.length
+      } Woe counter${gameState.nexii.length === 1 ? `` : `s`}.`,
   },
   {
     name: "Spiny Spoiler",
@@ -696,7 +712,7 @@ const blbEnemyCards: Card[] = [
   {
     name: "Beaver Buddies",
     cost: "2GU",
-    type: "Creature - Weasel",
+    type: "Creature - Beaver",
     generateText: () =>
       `Encounter two 2/3 green and blue Beaver creature tokens with hexproof. Then each Beaver you're facing captures an artifact, enchantment, or nonbasic land you control.`,
   },
@@ -704,8 +720,21 @@ const blbEnemyCards: Card[] = [
     name: "Rough Weather Ahead",
     cost: "3GU",
     type: "Sorcery",
+    generateText: () => `You get 10 Woe counters.`,
+  },
+  {
+    name: "Rambunctious Rodents",
+    cost: "2RW",
+    type: "Creature - Vole",
     generateText: () =>
-      `You get 10 Woe counters.`,
+      `Encounter two 2/2 red and white Vole creature tokens with first strike. If you're opulent, after the enemy's first combat phase, untap all foes and they get an additional combat phase.`,
+  },
+  {
+    name: "Solar Flare",
+    cost: "RW",
+    type: "Sorcery",
+    generateText: () =>
+      `Deal 3 damage to your biggest creature this could kill. (If it has no killable targets, instead it deals 3 damage to you.) Each Nexus gains 3 life.`,
   },
 ];
 export default blbEnemyCards;

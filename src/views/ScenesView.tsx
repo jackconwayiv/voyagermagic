@@ -88,10 +88,11 @@ const ScenesView = ({ gameState, setGameState }: ScenesViewProps) => {
     return (
       <WrapItem
         key={scene.scene}
+        m={1}
         width={{
-          base: "75px",
-          md: "125px",
-          lg: "175px",
+          base: "85px",
+          md: "100px",
+          lg: "120px",
         }}
       >
         <Card

@@ -3,6 +3,38 @@
 export const nexiiData = [
   {
     campaign: "BLB",
+    scene: 10,
+    id: "a",
+    name: "Electric Leaps",
+    color: "R",
+    life: 20,
+    isDead: false,
+    isEnraged: false,
+    isMonarch: false,
+    counters: [],
+    aliveRules: [
+      "♾️ All foes have first strike.",
+    ],
+    deadRules: ["♾️ All foes have double strike."],
+  },
+  {
+    campaign: "BLB",
+    scene: 10,
+    id: "b",
+    name: "Blurry Fur",
+    color: "W",
+    life: 20,
+    isDead: false,
+    isEnraged: false,
+    isMonarch: false,
+    counters: [],
+    aliveRules: [
+      "♾️ All foes enter with a shield counter.",
+    ],
+    deadRules: ["♾️ All foes enter with two shield counters."],
+  },
+  {
+    campaign: "BLB",
     scene: 9,
     id: "a",
     name: "Hungry Tongue",
