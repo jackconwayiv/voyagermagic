@@ -86,9 +86,9 @@ export const blbScenes = [
   },
   {
     scene: 11,
-    name: "The Doomshell Turtle",
+    name: "The Stormshell Turtle",
     color: "UB",
-    pre: "Between your party and the presumed comforts of Mabel's home and family (and her heirloom blade Cragflame) lies another beast, a turtle wrapped in dark fog and crowned in overcast clouds. Cold air encircles the beast in a cyclone. You steel yourselves for a fight.",
+    pre: "Between your party and the presumed comforts of Mabel's home and family (and her heirloom blade Cragflame) lies another beast, a turtle wrapped in dense fog and crowned in thick gray clouds. Cold air whips around the beast like the winds before a storm. You steel yourselves for a fight.",
     post: "Sword in hand, Mabel looks at the party. `Now I'm ready to face whatever comes,` she says. Helga, the young frog augur, gulps apprehensively, sheepishly looking at each party member to determine just what degree of a mess she landed them all in.",
     reward:
       "The party gains `Gift of the Mice.` Deck grows from 45 to 46 cards: add 1 rare.",

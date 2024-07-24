@@ -1,6 +1,41 @@
 //refactor to use class factory to spit out repeat props such as isDead, counters, etc.
 
 export const nexiiData = [
+  //Fix scaling for player counts:
+  {
+    campaign: "BLB",
+    scene: 11,
+    id: "a",
+    name: "Stormy Winds",
+    color: "U",
+    life: 20,
+    isDead: false,
+    isEnraged: false,
+    isMonarch: false,
+    counters: [],
+    aliveRules: [
+      "⏳ On upkeep, if your rolled fate die shows a 1, return a random (untapped) creature you control to its owner's hand.",
+      "☠️ When I die, each player must return a random creature they control to its owner's hand.",
+    ],
+    deadRules: [""],
+  },
+  {
+    campaign: "BLB",
+    scene: 11,
+    id: "b",
+    name: "Cloudy Crown",
+    color: "B",
+    life: 20,
+    isDead: false,
+    isEnraged: false,
+    isMonarch: false,
+    counters: [],
+    aliveRules: [
+      "⏳ On upkeep, if your rolled fate die shows a 2, discard your hand, then draw that many cards minus one.",
+      "☠️ When I die, each player must discard their hand, then draw that many cards minus one.",
+    ],
+    deadRules: [""],
+  },
   {
     campaign: "BLB",
     scene: 10,
@@ -12,9 +47,7 @@ export const nexiiData = [
     isEnraged: false,
     isMonarch: false,
     counters: [],
-    aliveRules: [
-      "♾️ All foes have first strike.",
-    ],
+    aliveRules: ["♾️ All foes have first strike."],
     deadRules: ["♾️ All foes have double strike."],
   },
   {
@@ -28,9 +61,7 @@ export const nexiiData = [
     isEnraged: false,
     isMonarch: false,
     counters: [],
-    aliveRules: [
-      "♾️ All foes enter with a shield counter.",
-    ],
+    aliveRules: ["♾️ All foes enter with a shield counter."],
     deadRules: ["♾️ All foes enter with two shield counters."],
   },
   {
@@ -47,7 +78,9 @@ export const nexiiData = [
     aliveRules: [
       "⚔️ Whenever a creature strikes me, if it's larger than any creature I've captured, return each other card I've captured to its owner's hand and I capture that creature.",
     ],
-    deadRules: ["⚔️ Whenever a foe becomes blocked, if it hasn't captured a creature, prevent all combat damage it would deal or be dealt. It captures each creature blocking it."],
+    deadRules: [
+      "⚔️ Whenever a foe becomes blocked, if it hasn't captured a creature, prevent all combat damage it would deal or be dealt. It captures each creature blocking it.",
+    ],
   },
   {
     campaign: "BLB",
@@ -60,9 +93,7 @@ export const nexiiData = [
     isEnraged: false,
     isMonarch: false,
     counters: [],
-    aliveRules: [
-      "♾️ All foes have ward 2.",
-    ],
+    aliveRules: ["♾️ All foes have ward 2."],
     deadRules: ["♾️ All foes have hexproof."],
   },
   //refactor scene 8 to scale better with different player counts.

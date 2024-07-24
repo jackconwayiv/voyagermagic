@@ -1,9 +1,9 @@
 import { Card } from "../types";
 
 const blbEnemyCards: Card[] = [
-  //each player discards down the the lowest hand size among players. each player gets enough Woe to equal the player with the most Woe counters.
   //for each permanent type, the players choose up to one they control and sacrifice the rest.
   //players can't gain life
+  //Rip Away Your Thoughts: Spellbind each card in your hand. (Exile them. You may play them from exile for an additional (2) mana.) Then mill that many cards.
 
   {
     name: "The Reckoning",
@@ -115,8 +115,12 @@ const blbEnemyCards: Card[] = [
     name: "Squeaky Squadron",
     cost: "3WW",
     type: "Creature - Vole",
-    generateText: () =>
-      `For each Nexus you're facing, encounter a 2/2 red and white Vole creature token with first strike.`,
+    generateText: (gameState) =>
+      `Encounter ${
+        gameState.nexii.length
+      }  red and white 2/2 Vole creature token${
+        gameState.nexii.length === 1 ? `` : `s`
+      } with first strike.`,
   },
   {
     name: "Mendhoof the Stag",
@@ -262,8 +266,10 @@ const blbEnemyCards: Card[] = [
     name: "Skybeak the Albatross",
     cost: "4UU",
     type: "Creature - Elemental Bird",
-    generateText: () =>
-      `Encounter a 1/1 blue Bird creature token named "Skybeak" with flying and "Whenever a creature blocks me, return it to its owner's hand." Then it grows once for each Nexus you're facing.`,
+    generateText: (gameState) =>
+      `Encounter a 1/1 blue Bird creature token named "Skybeak" with flying and "Whenever a creature blocks me, return it to its owner's hand." Then it grows ${
+        gameState.nexii.length
+      } time${gameState.nexii.length === 1 ? `` : `s`}.`,
   },
   {
     name: "Foes from the Marsh",
@@ -538,8 +544,10 @@ const blbEnemyCards: Card[] = [
     name: "Sudden Fog",
     cost: "2GG",
     type: "Sorcery",
-    generateText: () =>
-      `For each Nexus you're facing, tap one (untapped) creature you control.`,
+    generateText: (gameState) =>
+      `Tap ${
+        gameState.nexii.length
+      } (untapped) creature${gameState.nexii.length === 1 ? `` : `s`} you control.`,
   },
   {
     name: "Bolstered Beasts",
@@ -657,8 +665,10 @@ const blbEnemyCards: Card[] = [
     name: "Brookdam Builder",
     cost: "1G",
     type: "Creature - Beaver",
-    generateText: () =>
-      `Encounter a 2/3 green and blue Beaver creature token with hexproof. For each Nexus you're facing, tap and stun a random (nonbasic) land you control.`,
+    generateText: (gameState) =>
+      `Encounter a 2/3 green and blue Beaver creature token with hexproof. Tap and stun ${
+        gameState.nexii.length
+      } random (nonbasic) land${gameState.nexii.length === 1 ? `` : `s`} you control.`,
   },
   {
     name: "Gnawtooth Looter",
@@ -735,6 +745,20 @@ const blbEnemyCards: Card[] = [
     type: "Sorcery",
     generateText: () =>
       `Deal 3 damage to your biggest creature this could kill. (If it has no killable targets, instead it deals 3 damage to you.) Each Nexus gains 3 life.`,
+  },
+  {
+    name: "Spiraled Armorers",
+    cost: "3UB",
+    type: "Creature - Snail",
+    generateText: () =>
+      `Encounter two 1/3 blue and black Snail creature tokens with skulk. Then put a shield counter on each foe you're facing.`,
+  },
+  {
+    name: "Gnawing Worries",
+    cost: "2UB",
+    type: "Sorcery",
+    generateText: () =>
+      `Each player discards down to the lowest hand size among players. Then each player gets enough Woe counters to equal the player with the most Woe counters.`,
   },
 ];
 export default blbEnemyCards;
