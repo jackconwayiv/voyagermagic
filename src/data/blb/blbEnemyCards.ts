@@ -23,7 +23,8 @@ const blbEnemyCards: Card[] = [
     name: "Resurgence",
     cost: "1W",
     type: "Sorcery",
-    generateText: () => `Each Nexus gains 10 life.`,
+    generateText: (gameState) =>
+      `Each Nexus gains ${gameState.nexii.length * 3} life.`,
   },
   {
     name: "Awestrike",
@@ -36,8 +37,12 @@ const blbEnemyCards: Card[] = [
     name: "Shellshock",
     cost: "2WW",
     type: "Sorcery",
-    generateText: () =>
-      `Mute each creature you control. If you have no creatures, you get 3 Woe counters. If you're opulent, instead mute each nonland permanent you control.`,
+    generateText: (gameState) =>
+      `Mute each creature you control. If you have no creatures, you get ${
+        gameState.nexii.length
+      } Woe counter${
+        gameState.nexii.length === 1 ? `` : `s`
+      }. If you're opulent, instead mute each nonland permanent you control.`,
   },
   {
     name: "In This Together",
@@ -87,8 +92,10 @@ const blbEnemyCards: Card[] = [
     name: "Foreverdillo",
     cost: "3WW",
     type: "Creature - Armadillo",
-    generateText: () =>
-      `Encounter a 2/3 green and white Armadillo creature token with protector. Put X shield counters on it, where X is twice the number of Nexii you're facing.`,
+    generateText: (gameState) =>
+      `Encounter a 2/3 green and white Armadillo creature token with protector. Put ${
+        gameState.nexii.length
+      } shield counter${gameState.nexii.length === 1 ? `` : `s`} on it.`,
   },
   {
     name: "Troutswallow",
@@ -127,7 +134,7 @@ const blbEnemyCards: Card[] = [
     cost: "4WW",
     type: "Creature - Elemental Elk",
     generateText: () =>
-      `Encounter a 3/3 white Elk creature token named "Mendhoof" with lifelink and "When I die, each player gets X Woe counters, where X is the amount of life greater than 10 they have."`,
+      `Encounter a 3/3 white Elk creature token named "Mendhoof" with lifelink and "When I die, each player gets X Woe counters, where X is twice the number of Nexii they're facing."`,
   },
   {
     name: "Heartsong the Moth",
@@ -136,8 +143,6 @@ const blbEnemyCards: Card[] = [
     generateText: () =>
       `Encounter a 2/4 white Moth creature token named "Heartsong" with flying and lifelink and "I get +1/+1 for each Nexus and player with life total greater than their starting total."`,
   },
-
-  // ===========
 
   {
     name: "Foes from the Pond",
@@ -164,22 +169,28 @@ const blbEnemyCards: Card[] = [
     name: "Toothy Dambreaker",
     cost: "4UU",
     type: "Creature - Beaver",
-    generateText: () =>
-      `Encounter a 2/3 green and blue Beaver creature token with hexproof. For each 3 lands you control (rounded down) return a creature you control with highest mana value to its owner's hand.`,
+    generateText: (gameState) =>
+      `Encounter a 2/3 green and blue Beaver creature token with hexproof. Return the ${
+        gameState.nexii.length
+      } creature${
+        gameState.nexii.length === 1 ? `` : `s`
+      } you control with highest mana value to their owner's hand.`,
   },
   {
     name: "Cunning Fox-Mage",
     cost: "4UU",
     type: "Creature - Fox",
     generateText: () =>
-      `Encounter a 2/2 blue and red Fox creature token with provoke. Spellbind a card in your hand with the greatest mana value.`,
+      `Encounter a 2/2 blue and red Fox creature token with provoke. Put a card from your hand on top of your library.`,
   },
   {
     name: "Beaver of Ill Tidings",
     cost: "2U",
     type: "Creature - Beaver",
-    generateText: () =>
-      `Encounter a 2/3 green and blue Beaver creature token with hexproof. You get 2 Woe counters.`,
+    generateText: (gameState) =>
+      `Encounter a 2/3 green and blue Beaver creature token with hexproof. You get ${
+        gameState.nexii.length
+      }  Woe counter${gameState.nexii.length === 1 ? `` : `s`}.`,
   },
   {
     name: "Croaking Augury",
@@ -199,15 +210,21 @@ const blbEnemyCards: Card[] = [
     name: "Squirefisher",
     cost: "3UU",
     type: "Creature - Fish",
-    generateText: () =>
-      `Encounter a 2/2 white and blue Fish creature token with flying. Then mill 3 cards. For each creature card you mill this way, put a +1/+1 counter on each enemy Fish you're facing.`,
+    generateText: (gameState) =>
+      `Encounter a 2/2 white and blue Fish creature token with flying. Then mill ${
+        gameState.nexii.length
+      } card${
+        gameState.nexii.length === 1 ? `` : `s`
+      }. For each creature card you mill this way, put a +1/+1 counter on each enemy Fish you're facing.`,
   },
   {
     name: "Greater Spellbinding",
     cost: "3U",
     type: "Sorcery",
-    generateText: () =>
-      `Spellbind the X cards in your hand with the greatest mana value, where X is the number of Nexii you're facing.`,
+    generateText: (gameState) =>
+      `Spellbind the ${gameState.nexii.length} card${
+        gameState.nexii.length === 1 ? `` : `s`
+      } in your hand with the greatest mana value.`,
   },
   {
     name: "Runaround Rascal",
@@ -220,8 +237,10 @@ const blbEnemyCards: Card[] = [
     name: "Tears for the Fallen",
     cost: "1UU",
     type: "Sorcery",
-    generateText: () =>
-      `Get X Woe counters, where X is 2 plus the number of cards in your graveyard.`,
+    generateText: (gameState) =>
+      `Mill ${gameState.nexii.length} card${
+        gameState.nexii.length === 1 ? `` : `s`
+      }. Then get X Woe counters, where X is the number of cards in your graveyard.`,
   },
   {
     name: "Nightwhorl Stalker",
@@ -266,10 +285,8 @@ const blbEnemyCards: Card[] = [
     name: "Skybeak the Albatross",
     cost: "4UU",
     type: "Creature - Elemental Bird",
-    generateText: (gameState) =>
-      `Encounter a 1/1 blue Bird creature token named "Skybeak" with flying and "Whenever a creature blocks me, return it to its owner's hand." Then it grows ${
-        gameState.nexii.length
-      } time${gameState.nexii.length === 1 ? `` : `s`}.`,
+    generateText: () =>
+      `Encounter a 3/3 blue Bird creature token named "Skybeak" with flying and "Whenever a creature blocks me, return it to its owner's hand before damage resolves."`,
   },
   {
     name: "Foes from the Marsh",
@@ -296,15 +313,25 @@ const blbEnemyCards: Card[] = [
     name: "Terrorize",
     cost: "1B",
     type: "Sorcery",
-    generateText: () =>
-      `Target creature you control with the lowest toughness gets -X/-X until end of turn, where X is the number of Nexii you're facing. If you control no creatures, instead you get 3 Woe counters.`,
+    generateText: (gameState) =>
+      `Target creature you control with the lowest toughness gets -${
+        gameState.nexii.length
+      }/-${
+        gameState.nexii.length
+      } until end of turn, where X is the number of Nexii you're facing. If you control no creatures, instead you get ${
+        gameState.nexii.length
+      } Woe counter${gameState.nexii.length === 1 ? `` : `s`}.`,
   },
   {
     name: "Lose Your Mind",
     cost: "2B",
     type: "Sorcery",
-    generateText: () =>
-      `Discard 2 cards. If you're opulent, instead discard 2 cards at random.`,
+    generateText: (gameState) =>
+      `Discard ${gameState.nexii.length} card${
+        gameState.nexii.length === 1 ? `` : `s`
+      }. If you're opulent, instead discard ${gameState.nexii.length} card${
+        gameState.nexii.length === 1 ? `` : `s`
+      } at random.`,
   },
   {
     name: "Stupefying Fear",
@@ -327,7 +354,7 @@ const blbEnemyCards: Card[] = [
     cost: "2B",
     type: "Enchantment",
     generateText: (gameState) =>
-      `Encounter a "Death's Burden" enchantment token with: "Whenever any creature in your battleground dies, you mill a card and lose 1 life."  Then you get ${
+      `Encounter a "Death's Burden" enchantment token with: "Whenever any creature in your battleground dies, you mill a card and lose 1 life." Then you get ${
         gameState.nexii.length
       } Woe counter${gameState.nexii.length === 1 ? `` : `s`}.`,
   },
@@ -371,7 +398,7 @@ const blbEnemyCards: Card[] = [
     cost: "2BB",
     type: "Creature - Weasel",
     generateText: () =>
-      `Encounter a 2/2 white and black Weasel creature token with lifelink, then put a shield counter on each enemy Weasel in play.`,
+      `Encounter a 2/2 white and black Weasel creature token with lifelink. Then put a shield counter on each enemy Weasel in play.`,
   },
   {
     name: "Hexquill Warlock",
@@ -412,22 +439,26 @@ const blbEnemyCards: Card[] = [
     name: "The Ruination",
     cost: "2RR",
     type: "Legendary Sorcery - Event",
-    generateText: () =>
-      `After all other enemy cards have resolved, destroy all artifacts in play. Each player blights X (unblighted) (nonbasic) lands they control, where X is the number of Nexii you're facing.`,
+    generateText: (gameState) =>
+      `After all other enemy cards have resolved, destroy all artifacts in play. Each player blights ${
+        gameState.nexii.length
+      } (unblighted) (nonbasic) land${
+        gameState.nexii.length === 1 ? `` : `s`
+      } they control.`,
   },
   {
     name: "Earthquake",
     cost: "1RR",
     type: "Sorcery",
-    generateText: () =>
-      `Deal X damage to each nonflying creature in your battleground, where X is the number of Nexii you're facing. If no creatures are damaged this way, you get 3 Woe.`,
+    generateText: (gameState) =>
+      `Deal ${gameState.nexii.length} damage to each nonflying creature in your battleground. If no creatures are damaged this way, you get ${gameState.nexii.length} Woe.`,
   },
   {
     name: "Woeful Flames",
     cost: "2RR",
     type: "Sorcery",
-    generateText: () =>
-      `You get 3 Woe. Then consume all your Woe. Deal that much damage to target creature you control with the highest rarity and toughness this damage could kill. If no targets, get 3 Woe.`,
+    generateText: (gameState) =>
+      `You get ${gameState.nexii.length} Woe. Then consume all your Woe. Deal that much damage to target creature you control with the highest rarity and toughness this damage could kill. If no targets, get ${gameState.nexii.length} Woe.`,
   },
   {
     name: "Feral Ferocity",
@@ -474,8 +505,10 @@ const blbEnemyCards: Card[] = [
     name: "Quillshot Archer",
     cost: "3RR",
     type: "Creature - Porcupine",
-    generateText: () =>
-      `Encounter a 2/2 black and red Porcupine creature token with afflict 2. Put a -1/-1 counter on X target creatures you control, where X is the number of Nexii you're facing.`,
+    generateText: (gameState) =>
+      `Encounter a 2/2 black and red Porcupine creature token with afflict 2. Put a -1/-1 counter on ${
+        gameState.nexii.length
+      } target creature${gameState.nexii.length === 1 ? `` : `s`} you control.`,
   },
   {
     name: "Badlands Ruffian",
@@ -545,30 +578,36 @@ const blbEnemyCards: Card[] = [
     cost: "2GG",
     type: "Sorcery",
     generateText: (gameState) =>
-      `Tap ${
-        gameState.nexii.length
-      } (untapped) creature${gameState.nexii.length === 1 ? `` : `s`} you control.`,
+      `Tap ${gameState.nexii.length} (untapped) creature${
+        gameState.nexii.length === 1 ? `` : `s`
+      } you control.`,
   },
   {
     name: "Bolstered Beasts",
     cost: "4GG",
     type: "Sorcery",
-    generateText: () =>
-      `Encounter a 3/3 red and green Badger creature token with trample. Then put X +1/+1 counters on each foe you're facing, where X is the number of Nexii you're facing.`,
+    generateText: (gameState) =>
+      `Encounter a 3/3 red and green Badger creature token with trample. Then put ${
+        gameState.nexii.length
+      } +1/+1 counter${
+        gameState.nexii.length === 1 ? `` : `s`
+      } on each foe you're facing, where X is the number of Nexii you're facing.`,
   },
   {
     name: "Feel Small",
     cost: "3GG",
     type: "Sorcery",
-    generateText: () =>
-      `For each creature you control, pay (1) or mute that creature. If you control no creatures, instead you get 3 Woe counters.`,
+    generateText: (gameState) =>
+      `For each creature you control, pay (1) or mute that creature. If you control no creatures, instead you get ${
+        gameState.nexii.length
+      } Woe counter${gameState.nexii.length === 1 ? `` : `s`}.`,
   },
   {
     name: "Fiendish Foraging",
     cost: "1G",
     type: "Sorcery",
     generateText: () =>
-      `Exile up to X cards from your graveyard, where X is the number of your lands. For each nonland card exiled this way, each Nexus gains 3 life. For each card you can't exile, you get a Woe counter.`,
+      `Exile up to X cards from your graveyard, where X is the number of your lands. For each nonland card exiled this way, each Nexus gains 1 life. For each card you can't exile, you get a Woe counter.`,
   },
   {
     name: "The Cleansing",
@@ -668,7 +707,9 @@ const blbEnemyCards: Card[] = [
     generateText: (gameState) =>
       `Encounter a 2/3 green and blue Beaver creature token with hexproof. Tap and stun ${
         gameState.nexii.length
-      } random (nonbasic) land${gameState.nexii.length === 1 ? `` : `s`} you control.`,
+      } random (nonbasic) land${
+        gameState.nexii.length === 1 ? `` : `s`
+      } you control.`,
   },
   {
     name: "Gnawtooth Looter",
@@ -681,8 +722,10 @@ const blbEnemyCards: Card[] = [
     name: "Gravehiss Ritual",
     cost: "3BG",
     type: "Sorcery",
-    generateText: () =>
-      `Mill X cards, where X is twice the number of Nexii you're facing. Then, for each nonland card in your graveyard, lose 1 life unless you discard a random card or wound a creature you control.`,
+    generateText: (gameState) =>
+      `Mill ${gameState.nexii.length * 2} card${
+        gameState.nexii.length === 1 ? `` : `s`
+      }. Then, for each nonland card in your graveyard, lose 1 life unless you discard a random card or wound a creature you control.`,
   },
   {
     name: "Twin Slitherers",
@@ -695,8 +738,8 @@ const blbEnemyCards: Card[] = [
     name: "Traitorous Blow",
     cost: "3UR",
     type: "Sorcery",
-    generateText: () =>
-      `Target creature you control with the greatest power strikes you. Then return it to its owner's hand. If there is no target, you get 3 Woe counters.`,
+    generateText: (gameState) =>
+      `Target creature you control with the greatest power strikes you. Then return it to its owner's hand. If there is no target, you get ${gameState.nexii.length} Woe.`,
   },
   {
     name: "Plotting Pair",
@@ -730,7 +773,10 @@ const blbEnemyCards: Card[] = [
     name: "Rough Weather Ahead",
     cost: "3GU",
     type: "Sorcery",
-    generateText: () => `You get 10 Woe counters.`,
+    generateText: (gameState) =>
+      `You get ${gameState.nexii.length * 3} Woe counter${
+        gameState.nexii.length === 1 ? `` : `s`
+      }.`,
   },
   {
     name: "Rambunctious Rodents",
@@ -743,8 +789,8 @@ const blbEnemyCards: Card[] = [
     name: "Solar Flare",
     cost: "RW",
     type: "Sorcery",
-    generateText: () =>
-      `Deal 3 damage to your biggest creature this could kill. (If it has no killable targets, instead it deals 3 damage to you.) Each Nexus gains 3 life.`,
+    generateText: (gameState) =>
+      `Deal ${gameState.nexii.length} damage to your biggest creature this could kill. (If it has no killable targets, instead it deals ${gameState.nexii.length} damage to you.) Each Nexus gains ${gameState.nexii.length} life.`,
   },
   {
     name: "Spiraled Armorers",
@@ -759,6 +805,60 @@ const blbEnemyCards: Card[] = [
     type: "Sorcery",
     generateText: () =>
       `Each player discards down to the lowest hand size among players. Then each player gets enough Woe counters to equal the player with the most Woe counters.`,
+  },
+  {
+    name: "Badger Pals",
+    cost: "4RG",
+    type: "Creature - Badger",
+    generateText: () =>
+      `Encounter two 3/3 red and green Badger creature tokens with trample. Then you get a number of Woe counters equal to the greatest power among your foes.`,
+  },
+  {
+    name: "Ransack the Place",
+    cost: "4RG",
+    type: "Sorcery",
+    generateText: () =>
+      `Blight each nonbasic land you control. For the rest of the game, blighted lands lose all other text and gain "T: Add <>."`,
+  },
+  {
+    name: "Fishy Friends",
+    cost: "3WU",
+    type: "Creature - Fish",
+    generateText: () =>
+      `Encounter two 2/2 white and blue Fish creature tokens with flying. Then spellbind a random card from your hand.`,
+  },
+  {
+    name: "Splashed in the Eyes",
+    cost: "3WU",
+    type: "Sorcery",
+    generateText: () => `Tap each creature you control.`,
+  },
+  {
+    name: "Pokey Partners",
+    cost: "3BR",
+    type: "Creature - Porcupine",
+    generateText: () =>
+      `Encounter two 2/2 black and red Porcupine creature tokens with afflict 2. Then each enemy Porcupine deals 1 damage to the player its facing.`,
+  },
+  {
+    name: "Spines in the Paw",
+    cost: "3BR",
+    type: "Sorcery",
+    generateText: () => `Discard a card at random. This spell deals X damage to you, where X is the discarded card's mana value.`,
+  },
+  {
+    name: "Armadillo Duo",
+    cost: "4GW",
+    type: "Creature - Armadillo",
+    generateText: () =>
+      `Encounter two 2/3 green and white Armadillo creature tokens with protector. Then each Nexus gains life equal to the number of foes you're facing.`,
+  },
+  {
+    name: "Shields Up",
+    cost: "2GW",
+    type: "Sorcery",
+    generateText: () =>
+      `After all other enemy spells have resolved this turn, put a shield counter on each foe in play.`,
   },
 ];
 export default blbEnemyCards;

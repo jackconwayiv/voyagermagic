@@ -95,7 +95,7 @@ export const blbScenes = [
   },
   {
     scene: 12,
-    name: "The Filching Raccoon",
+    name: "The Pawful Raccoon",
     color: "RG",
     pre: "The party decides to seek the counsel of the batfolk, known readers of the stars, to find out more about this predicament. You set out under cover of night to the treetop home of the bats, but you're not the only ones hoping to find some bats in the boughs...",
     post: "The leader of the batfolk Zoraline praises your efforts so far between yawns. `I have seen ... a wicked one, acting in malice ... among the squirrelfolk ...` She and some other batfolk offer to fly with you to the squirrel nests and lend their aid.",
@@ -128,5 +128,14 @@ export const blbScenes = [
     post: "A strange looking otter who calls himself Ral wields lightning and helps you apprehend the Infamous Cruelclaw (hereafter simply Cruelclaw). After some convincing, the weasel scoundrel reveals that it was indeed King Glarb who hired him to steal the Night-Bird's egg, no idea what for. From bad to worse.",
     reward:
       "The party gains `Gift of the Otters.` Deck grows from 49 to 50 cards: add 1 rare.",
+  },
+  {
+    scene: 16,
+    name: "Ral's Pursuit",
+    color: "UBR",
+    pre: "Cruelclaw is placed under arrest. As the party regroups and tries to set a new course of action, Ral inquires about a blue-hooded mage. None of the Bloomburrow residents have ever seen such a creature (a human) before, however. But Helga has seen a similar figure in one of her visions...",
+    post: "Ral, downcast from the lack of progress on his quest, is nevertheless willing to help the party bring King Glarb to justice for what he's done. Mabel squeaks up: `We must rescue the stolen egg and return it to Maha!` Everyone looks at her like she's had one slice of cheese too many...",
+    reward:
+      "Deck grows from 50 to 51 cards: add 1 land.",
   },
 ];
